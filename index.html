@@ -29,8 +29,9 @@
             box-sizing: border-box;
             background-color: var(--background-ivory);
             color: var(--main-text-dark); /* Main text color for readability */
-            scroll-behavior: smooth;
+            scroll-behavior: smooth; /* This is what makes the scroll animated! */
             line-height: 1.6;
+            overflow-x: hidden; /* Prevent horizontal scroll from animations */
         }
 
         /* Utility Classes */
@@ -51,14 +52,34 @@
         }
 
         /* Subtle Animations for Entrance */
+        /* Applied to sections as they scroll into view */
         @keyframes fadeInDown {
             from { opacity: 0; transform: translateY(-20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+
+        /* Enhanced animated-section for more distinct scroll effect */
+        .animated-section {
+            opacity: 0; /* Hidden by default */
+            transform: translateY(40px) scale(0.98); /* Start lower and slightly smaller */
+            transition: opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smoother and longer transition */
         }
+        .animated-section.is-visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* Animated headings within sections */
+        .animated-heading {
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.6s ease-out 0.2s, transform 0.6s ease-out 0.2s; /* Delayed animation */
+        }
+        .animated-section.is-visible .animated-heading {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
 
         /* Navigation Bar */
         .navbar {
@@ -73,8 +94,15 @@
             display: flex; /* Flex for logo and nav links */
             justify-content: space-between; /* Space out logo and links */
             align-items: center;
+            transition: transform 0.3s ease-out, background-color 0.3s ease, box-shadow 0.3s ease; /* Added transform to transition for hide/show */
         }
 
+        /* Class to hide the navbar */
+        .navbar-hidden {
+            transform: translateY(-100%); /* Move navbar completely up and out of view */
+        }
+
+        /* Logo Link (now back to simple text link) */
         .navbar-logo {
             font-size: 1.8em;
             font-weight: 800;
@@ -105,9 +133,27 @@
             font-weight: 500;
             padding: 10px 15px; /* Adjusted padding for more links */
             border-radius: 6px; /* Less rounded corners */
+            position: relative; /* For underline animation */
+            overflow: hidden; /* Hide overflow of pseudo-element */
             transition: all 0.2s ease-in-out;
             font-size: 0.95em; /* Slightly smaller font for more links */
             white-space: nowrap; /* Prevent wrapping for nav links */
+        }
+
+        .navbar a::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0; /* Starts hidden */
+            height: 2px;
+            background-color: var(--primary-color); /* Underline color */
+            transition: width 0.3s ease-out;
+        }
+
+        .navbar a:hover::before {
+            width: calc(100% - 20px); /* Grow to full width minus padding */
         }
 
         .navbar a:hover {
@@ -122,31 +168,38 @@
             color: var(--background-ivory);
             box-shadow: 0 4px 12px rgba(74, 104, 53, 0.3); /* Shadow matching primary */
         }
+        .navbar a.active::before { /* Ensure active link has underline */
+            width: calc(100% - 20px);
+        }
+
 
         /* Hero Section (Home) */
         #home {
             background: linear-gradient(135deg, var(--background-ivory), rgba(var(--background-ivory), 0.95)); /* Subtle ivory gradient */
             padding-top: 100px;
-            animation: fadeInDown 1.2s ease-out;
+            animation: fadeInDown 1.2s ease-out; /* Main hero animation */
             color: var(--main-text-dark); /* Ensure text is dark on light background */
         }
 
         #home h1 {
             font-size: 4em;
-            font-weight: 700; /* Adjusted from 800 for thinner look */
+            font-weight: 700;
             margin-bottom: 20px;
-            color: var(--primary-color); /* Deep Olive Green for main title */
-            text-shadow: none; /* Remove text shadow for cleaner look */
+            color: var(--primary-color);
+            text-shadow: none;
             letter-spacing: -1px;
+            /* Animation specifically for H1 in hero */
+            animation: fadeInDown 1.2s ease-out; /* Use a specific keyframe for hero elements */
         }
 
         #home p {
-            font-size: 1.2em; /* Slightly adjusted size */
+            font-size: 1.2em;
             max-width: 700px;
             line-height: 1.7;
             margin-bottom: 40px;
-            color: var(--main-text-dark); /* Main text color */
-            animation: fadeInUp 1.5s ease-out;
+            color: var(--main-text-dark);
+            /* Animation specifically for P in hero */
+            animation: fadeInDown 1.5s ease-out; /* Delayed slightly */
         }
 
         .button {
@@ -158,7 +211,7 @@
             font-size: 1em;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease-in-out;
+            transition: all 0.2s ease-in-out; /* Smoother transition for all button properties */
             box-shadow: 0 4px 15px rgba(74, 104, 53, 0.4);
             letter-spacing: 0.5px;
             display: inline-flex; /* For icon and text alignment */
@@ -173,23 +226,24 @@
         }
 
         .button:active {
-            transform: translateY(0);
-            box-shadow: 0 2px 10px rgba(74, 104, 53, 0.3);
+            transform: translateY(0); /* Returns to original position */
+            box-shadow: 0 2px 10px rgba(74, 104, 53, 0.3); /* Smaller shadow on click */
+            background-color: #3f582d; /* Stays darker on click */
         }
 
         /* Section Styling */
         .section {
             padding: 100px 20px; /* Default padding for desktop */
             text-align: center;
-            animation: fadeInUp 1s ease-out;
+            /* Removed direct animation here, using .animated-section for JS-triggered animation */
             color: var(--main-text-dark); /* Ensure text is dark on light background */
         }
 
         .section h2 {
             font-size: 3em;
-            font-weight: 600; /* Adjusted from 800 for thinner look */
+            font-weight: 600;
             margin-bottom: 30px;
-            color: var(--primary-color); /* Deep Olive Green for section titles */
+            color: var(--primary-color);
             text-shadow: none;
             letter-spacing: -0.5px;
         }
@@ -223,28 +277,29 @@
             border-radius: 8px; /* Subtle rounding */
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1); /* Lighter shadow for sophistication */
             text-align: left;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease; /* Smooth transition for hover */
             border: 1px solid rgba(var(--ui-elements-slate), 0.1); /* Very subtle border */
         }
 
         .grid-item:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* More pronounced shadow on hover */
+            transform: translateY(-8px) scale(1.01); /* Lift and subtle scale */
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2); /* More pronounced shadow on hover */
+            background-color: #fcfbf7; /* Slight background tint on hover */
         }
 
         .grid-item h3 {
-            font-size: 1.7em; /* Adjusted size */
-            font-weight: 600; /* Adjusted from 700 for thinner look */
+            font-size: 1.7em;
+            font-weight: 600;
             margin-bottom: 15px;
-            color: var(--primary-color); /* Deep Olive Green for mission */
+            color: var(--primary-color);
         }
 
         .grid-item:nth-child(2) h3 {
-            color: var(--accent-color); /* Warm Rust for how it works */
+            color: var(--accent-color);
         }
 
         .grid-item p {
-            font-size: 0.95em; /* Slightly smaller for detailed text */
+            font-size: 0.95em;
             line-height: 1.7;
             color: var(--main-text-dark);
             margin-bottom: 0;
@@ -293,7 +348,7 @@
             border-radius: 6px;
             background-color: #FFF; /* Pure white input background */
             color: var(--main-text-dark);
-            transition: all 0.3s ease;
+            transition: all 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for focus */
             box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
         }
 
@@ -308,7 +363,7 @@
         .form-group textarea:focus {
             outline: none;
             border-color: var(--primary-color); /* Deep Olive Green on focus */
-            box-shadow: 0 0 0 3px rgba(74, 104, 53, 0.3);
+            box-shadow: 0 0 0 5px rgba(74, 104, 53, 0.4); /* Larger, more prominent glow */
             background-color: #FCFBF7; /* Slightly off-white on focus */
         }
         .form-group textarea {
@@ -350,8 +405,6 @@
         .button.google-signin .icon {
             margin-right: 8px; /* Space between icon and text */
             font-size: 1.2em; /* Adjust icon size */
-            /* Using a simple SVG as a placeholder for the Google G icon */
-            /* This is a simple SVG, not an external image or Font Awesome */
             display: inline-block;
             vertical-align: middle;
             width: 1em;
@@ -367,11 +420,12 @@
             margin-bottom: 20px;
             text-align: left; /* Keep job listing text left-aligned */
             box-shadow: 0 3px 10px rgba(0,0,0,0.05);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease; /* Smooth transition for hover */
         }
         #careers .job-listing:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            transform: translateY(-8px) scale(1.01); /* Lift and subtle scale */
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2); /* More pronounced shadow on hover */
+            background-color: #fcfbf7; /* Slight background tint on hover */
         }
         #careers .job-listing h3 {
             color: var(--primary-color);
@@ -410,11 +464,13 @@
         .footer a {
             color: var(--background-ivory); /* Link color in footer */
             text-decoration: none;
-            transition: color 0.2s ease;
+            position: relative;
+            transition: color 0.2s ease, transform 0.2s ease;
         }
         .footer a:hover {
             color: var(--primary-color);
-            text-decoration: underline;
+            text-decoration: underline; /* Keep underline for clearer link behavior */
+            transform: translateY(-2px); /* Subtle lift */
         }
 
 
@@ -459,7 +515,7 @@
                 flex-direction: column;
                 padding: 10px;
             }
-            .navbar-logo {
+            .navbar-logo { /* Targeting the original logo link */
                 margin-bottom: 10px;
             }
             .navbar ul {
@@ -510,31 +566,30 @@
 
     <!-- Navigation Bar -->
     <nav class="navbar">
-        <a href="#home" class="navbar-logo">Generations</a>
+        <a href="#home" class="navbar-logo"><img width="100" src="./images/generations-logo.png"></a>
         <ul>
             <li><a href="#home" class="active" onclick="setActiveLink(this)">Home</a></li>
             <li><a href="#about" onclick="setActiveLink(this)">About Us</a></li>
             <li><a href="#sign-in" onclick="setActiveLink(this)">Sign-In</a></li>
-            <!-- Removed Privacy link from main navbar -->
             <li><a href="#careers" onclick="setActiveLink(this)">Careers</a></li>
             <li><a href="#contact-us" onclick="setActiveLink(this)">Contact Us</a></li>
         </ul>
     </nav>
 
     <!-- Home Section (Hero) -->
-    <section id="home" class="flex-center">
+    <section id="home" class="flex-center animated-section">
         <h1>Generations</h1>
         <p>Connecting the world, one family at a time. Discover your roots, expand your family tree, and build a global network of connections.</p>
         <a href="#sign-in" class="button">Join Generations Today!</a>
     </section>
 
     <!-- About Us Section -->
-    <section id="about" class="section flex-center">
+    <section id="about" class="section flex-center animated-section">
         <div class="container">
-            <h2>About Generations</h2>
+            <h2 class="animated-heading">About Generations</h2>
             <p>Generations is a revolutionary web application designed to bridge the gaps between families across the globe. Our unique algorithm cross-references individual nuclear families, helping you discover relatives you never knew you had. We believe in the power of connection and the richness of shared heritage.</p>
 
-            <div class="grid-container">
+            <div class="grid-container" style="text-align: center;">
                 <div class="grid-item">
                     <h3>Our Mission</h3>
                     <p>To empower individuals to connect with their extended families, foster a deeper understanding of their lineage, and build a more interconnected global community. We strive to make family history accessible and exciting for everyone.</p>
@@ -548,12 +603,11 @@
     </section>
 
     <!-- Sign-in Section -->
-    <section id="sign-in" class="section flex-center">
+    <section id="sign-in" class="section flex-center animated-section">
         <div class="container">
-            <h2>Join the Generations Family</h2>
+            <h2 class="animated-heading">Join the Generations Family</h2>
             <div class="form-card">
                 <form>
-                    <!-- Traditional email/password fields are kept, but now optional if Google is primary -->
                     <p style="text-align: center; margin-bottom: 25px; color: var(--main-text-dark);">
                         Sign in with your email or securely with Google.
                     </p>
@@ -583,12 +637,12 @@
     </section>
 
     <!-- Careers Section -->
-    <section id="careers" class="section flex-center">
+    <section id="careers" class="section flex-center animated-section">
         <div class="container">
-            <h2>Join Our Family</h2>
+            <h2 class="animated-heading">Join Our Family</h2>
             <p>Passionate about connecting the world? Generations is a dynamic and innovative startup dedicated to transforming how people discover their family heritage. We're always looking for talented individuals to join our growing team.</p>
 
-            <div class="grid-container" style="max-width: 800px; text-align: center;">
+            <div class="grid-container" style="max-width: 800px;">
                 <div class="job-listing">
                     <h3>Software Engineer (Backend)</h3>
                     <p>Develop and maintain our core family-matching algorithm and scalable backend infrastructure. Proficiency in Python/Node.js and database management required.</p>
@@ -610,9 +664,9 @@
     </section>
 
     <!-- Contact Us Section -->
-    <section id="contact-us" class="section flex-center">
+    <section id="contact-us" class="section flex-center animated-section">
         <div class="container">
-            <h2>Get in Touch</h2>
+            <h2 class="animated-heading">Get in Touch</h2>
             <p>Have questions, feedback, or need support? We're here to help! Please fill out the form below or reach out to us directly.</p>
 
             <div class="form-card">
@@ -670,16 +724,88 @@
                 homeLink.classList.add('active');
             }
 
-            // Optional: Update active link on scroll to correspond to current section
-            const sections = document.querySelectorAll('section[id]');
-            const navLinks = document.querySelectorAll('.navbar a:not(.navbar-logo)'); // Exclude logo
+            // Intersection Observer for scroll animations
+            const sections = document.querySelectorAll('.animated-section');
+            const headings = document.querySelectorAll('.animated-heading');
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        // No unobserve here, so animations re-trigger if element leaves and re-enters viewport.
+                        // If you prefer animation to play only ONCE, uncomment the line below:
+                        // observer.unobserve(entry.target);
+                    } else {
+                        // Optional: remove is-visible when not intersecting to allow re-animation
+                        // entry.target.classList.remove('is-visible');
+                    }
+                });
+            }, {
+                root: null, // viewport as root
+                rootMargin: '0px',
+                threshold: 0.2 // Trigger when 20% of the section is visible
+            });
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+
+            // Observe headings separately for their staggered animation
+            const headingObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target); // Headings animate once
+                    }
+                });
+            }, {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.5 // Trigger when 50% of the heading is visible
+            });
+
+            headings.forEach(heading => {
+                headingObserver.observe(heading);
+            });
+
+            // --- Navbar auto-hide/show logic ---
+            let lastScrollY = 0;
+            let scrollTimeout;
+            const navbar = document.querySelector('.navbar');
+            const scrollHideThreshold = 50; // Pixels to scroll down before hiding
+
+            window.addEventListener('scroll', () => {
+                const currentScrollY = window.scrollY;
+
+                // Clear any existing timeout for showing navbar
+                clearTimeout(scrollTimeout);
+
+                if (currentScrollY > lastScrollY && currentScrollY > scrollHideThreshold) {
+                    // Scrolling down and past threshold
+                    navbar.classList.add('navbar-hidden');
+                } else if (currentScrollY < lastScrollY) {
+                    // Scrolling up
+                    navbar.classList.remove('navbar-hidden');
+                }
+
+                lastScrollY = currentScrollY;
+
+                // Set a timeout to show the navbar after scrolling stops
+                scrollTimeout = setTimeout(() => {
+                    navbar.classList.remove('navbar-hidden');
+                }, 800); // Show after 300ms of no scrolling
+            });
+            // --- End Navbar auto-hide/show logic ---
+
+            // Update active link on scroll to correspond to current section
+            const allSections = document.querySelectorAll('section[id]');
+            const navLinks = document.querySelectorAll('.navbar a:not(.navbar-logo)'); // Exclude logo link
 
             window.addEventListener('scroll', () => {
                 let current = '';
-                // The threshold for when a section becomes 'active' based on scroll position
-                const scrollThreshold = window.innerHeight * 0.25;
+                const scrollThreshold = window.innerHeight * 0.25; // Adjusted threshold
 
-                sections.forEach(section => {
+                allSections.forEach(section => {
                     const sectionTop = section.offsetTop;
                     const sectionBottom = sectionTop + section.offsetHeight;
 
@@ -690,7 +816,6 @@
                 });
 
                 navLinks.forEach(link => {
-                    // Only apply active class to internal scroll links
                     if (link.href.includes("#")) { // Check if it's an internal anchor link
                         link.classList.remove('active');
                         if (link.href.includes(current) && current !== '') {
@@ -698,8 +823,9 @@
                         }
                     }
                 });
+
                 // Special handling for when scrolled to top or near top to keep 'Home' active
-                if (window.scrollY < sections[0].offsetTop + scrollThreshold && current === 'home') {
+                if (window.scrollY < allSections[0].offsetTop + scrollThreshold && current === 'home') {
                     document.querySelector('.navbar a[href="#home"]').classList.add('active');
                 } else if (window.scrollY === 0) { // If exactly at the very top
                      navLinks.forEach(link => link.classList.remove('active'));
