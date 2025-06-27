@@ -279,19 +279,21 @@
 
         /* Logo Link (now back to simple text link) */
         .navbar-logo {
-            font-size: 1.8em;
-            font-weight: 800;
-            color: var(--background-ivory); /* Ivory for logo text */
-            text-decoration: none;
-            padding: 5px 10px;
-            border-radius: 6px;
-            letter-spacing: -0.5px;
-            transition: color 0.3s ease;
-        }
+    font-size: 1.8em;
+    font-weight: 800;
+    color: var(--background-ivory); /* Ivory for logo text */
+    text-decoration: none;
+    padding: 0;
+    background: none !important;
+    border-radius: 0;
+    letter-spacing: -0.5px;
+    transition: color 0.3s ease;
+}
 
         .navbar-logo:hover {
-            color: var(--primary-color); /* Hover effect for logo */
-        }
+    color: var(--primary-color); /* Hover effect for logo */
+    background: none !important;
+}
 
         .navbar ul {
             list-style: none;
@@ -346,6 +348,60 @@
         .navbar a.active::before { /* Ensure active link has underline */
             width: calc(100% - 20px);
         }
+
+        /* Additional background images for visual appeal */
+#sign-in {
+    background-image: 
+        url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'),
+        linear-gradient(135deg, rgba(250, 248, 242, 0.92), rgba(250, 248, 242, 0.88));
+    background-blend-mode: overlay;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+#contact-us {
+    background-image: 
+        url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'),
+        linear-gradient(135deg, rgba(250, 248, 242, 0.92), rgba(250, 248, 242, 0.88));
+    background-blend-mode: overlay;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+/* Enhanced decorative elements */
+.content-decoration {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.content-decoration .floating-icon {
+    position: absolute;
+    opacity: 0.08;
+    font-size: 2.5em;
+    color: var(--primary-color);
+    animation: gentleFloat 8s ease-in-out infinite;
+}
+
+.content-decoration .floating-icon:nth-child(1) { top: 15%; left: 10%; animation-delay: 0s; }
+.content-decoration .floating-icon:nth-child(2) { top: 30%; right: 8%; animation-delay: 2s; }
+.content-decoration .floating-icon:nth-child(3) { top: 50%; left: 5%; animation-delay: 4s; }
+.content-decoration .floating-icon:nth-child(4) { top: 70%; right: 12%; animation-delay: 6s; }
+.content-decoration .floating-icon:nth-child(5) { top: 85%; left: 15%; animation-delay: 1s; }
+
+@keyframes gentleFloat {
+    0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.08; }
+    25% { transform: translateY(-8px) rotate(2deg); opacity: 0.12; }
+    50% { transform: translateY(-15px) rotate(-1deg); opacity: 0.15; }
+    75% { transform: translateY(-8px) rotate(1deg); opacity: 0.12; }
+}
 
 
         /* Hero Section (Home) */
@@ -741,7 +797,7 @@
 
     <!-- Navigation Bar -->
     <nav class="navbar">
-        <a href="#home" class="navbar-logo">
+       <a href="#home" class="navbar-logo">
     <img width="100" src="./images/generations-logo.png" style="background: none; border: none; box-shadow: none;">
 </a>
         <ul>
@@ -765,27 +821,45 @@
     <h1>Generations</h1>
     <p>Connecting the world, one family at a time. Discover your roots, expand your family tree, and build a global network of connections.</p>
     <a href="#sign-in" class="button">Join Generations Today!</a>
+
+    <!-- About Section -->
 </section>
-
-    <!-- About Us Section -->
     <section id="about" class="section flex-center animated-section">
-        <div class="container">
-            <h2 class="animated-heading">About Generations</h2>
-            <p>Generations is a revolutionary web application designed to bridge the gaps between families across the globe. Our unique algorithm cross-references individual nuclear families, helping you discover relatives you never knew you had. We believe in the power of connection and the richness of shared heritage.</p>
+        <div class="content-decoration">
+    <i class="fas fa-users floating-icon"></i>
+    <i class="fas fa-heart floating-icon"></i>
+    <i class="fas fa-search floating-icon"></i>
+    <i class="fas fa-globe-americas floating-icon"></i>
+    <i class="fas fa-tree floating-icon"></i>
+</div>
+    <div class="container">
+        <h2 class="animated-heading">About Generations</h2>
+        <p>Generations is a revolutionary web application designed to bridge the gaps between families across the globe. Our unique algorithm cross-references individual nuclear families, helping you discover relatives you never knew you had. We believe in the power of connection and the richness of shared heritage.</p>
 
+        <div class="grid-container">
             <div class="grid-item">
-    <i class="fas fa-bullseye grid-item-icon"></i>
-    <h3>Our Mission</h3>
-    <p>To empower individuals to connect with their extended families, foster a deeper understanding of their lineage, and build a more interconnected global community. We strive to make family history accessible and exciting for everyone.</p>
-</div>
-<div class="grid-item">
-    <i class="fas fa-cogs grid-item-icon"></i>
-    <h3>How It Works</h3>
-    <p>Users input their nuclear family data, and our advanced algorithm analyzes commonalities and potential links across our vast database. We then present you with potential family connections, allowing you to explore and verify new relationships securely.</p>
-</div>
+                <i class="fas fa-bullseye grid-item-icon"></i>
+                <h3>Our Mission</h3>
+                <p>To empower individuals to connect with their extended families, foster a deeper understanding of their lineage, and build a more interconnected global community. We strive to make family history accessible and exciting for everyone.</p>
+            </div>
+            <div class="grid-item">
+                <i class="fas fa-cogs grid-item-icon"></i>
+                <h3>How It Works</h3>
+                <p>Users input their nuclear family data, and our advanced algorithm analyzes commonalities and potential links across our vast database. We then present you with potential family connections, allowing you to explore and verify new relationships securely.</p>
+            </div>
+        </div>
+    </div>
+</section>
 
     <!-- Sign-in Section -->
     <section id="sign-in" class="section flex-center animated-section">
+        <div class="content-decoration">
+    <i class="fas fa-key floating-icon"></i>
+    <i class="fas fa-shield-alt floating-icon"></i>
+    <i class="fas fa-user-plus floating-icon"></i>
+    <i class="fas fa-lock floating-icon"></i>
+    <i class="fas fa-check-circle floating-icon"></i>
+</div>
         <div class="container">
             <h2 class="animated-heading">Join the Generations Family</h2>
             <div class="form-card">
@@ -794,12 +868,10 @@
                         Sign in with your email or securely with Google.
                    <div class="form-group">
     <label for="email">Email Address</label>
-    <i class="fas fa-envelope form-icon"></i>
     <input type="email" id="email" placeholder="you@example.com">
 </div>
 <div class="form-group">
     <label for="password">Password</label>
-    <i class="fas fa-lock form-icon"></i>
     <input type="password" id="password" placeholder="********">
 </div>
                     <p style="text-align: center; margin: 20px 0; color: var(--secondary-text-highlight); font-weight: 500;">
@@ -821,6 +893,14 @@
 
     <!-- Careers Section -->
     <section id="careers" class="section flex-center animated-section">
+        <div class="content-decoration">
+    <i class="fas fa-briefcase floating-icon"></i>
+    <i class="fas fa-lightbulb floating-icon"></i>
+    <i class="fas fa-rocket floating-icon"></i>
+    <i class="fas fa-handshake floating-icon"></i>
+    <i class="fas fa-star floating-icon"></i>
+</div>
+
         <div class="container">
             <h2 class="animated-heading"><i class="fas fa-briefcase section-icon" style="display: block;"></i>Join Our Family</h2>
             <p>Passionate about connecting the world? Generations is a dynamic and innovative startup dedicated to transforming how people discover their family heritage. We're always looking for talented individuals to join our growing team.</p>
@@ -844,11 +924,6 @@
     <p>Foster a vibrant and supportive community among Generations users. Manage social media, moderate forums, and organize virtual events.</p>
     <a href="#" class="apply-button">Apply Now</a>
 </div>
-                <div class="job-listing">
-                    <h3>Community Engagement Specialist</h3>
-                    <p>Foster a vibrant and supportive community among Generations users. Manage social media, moderate forums, and organize virtual events.</p>
-                    <a href="#" class="apply-button">Apply Now</a>
-                </div>
             </div>
             <p style="margin-top: 40px;">Don't see a role that fits? Send us your resume at <a href="mailto:careers@generations.com" style="color: var(--primary-color); text-decoration: underline;">careers@generations.com</a></p>
         </div>
@@ -856,6 +931,13 @@
 
     <!-- Contact Us Section -->
     <section id="contact-us" class="section flex-center animated-section">
+        <div class="content-decoration">
+    <i class="fas fa-envelope floating-icon"></i>
+    <i class="fas fa-phone floating-icon"></i>
+    <i class="fas fa-comments floating-icon"></i>
+    <i class="fas fa-paper-plane floating-icon"></i>
+    <i class="fas fa-headset floating-icon"></i>
+</div>
         <div class="container">
             <h2 class="animated-heading">Get in Touch</h2>
             <p>Have questions, feedback, or need support? We're here to help! Please fill out the form below or reach out to us directly.</p>
@@ -864,22 +946,18 @@
                 <form>
                     <div class="form-group">
     <label for="contact-name">Your Name</label>
-    <i class="fas fa-user form-icon"></i>
     <input type="text" id="contact-name" placeholder="John Doe" required>
 </div>
 <div class="form-group">
     <label for="contact-email">Your Email Address</label>
-    <i class="fas fa-envelope form-icon"></i>
     <input type="email" id="contact-email" placeholder="you@example.com" required>
 </div>
 <div class="form-group">
     <label for="contact-subject">Subject</label>
-    <i class="fas fa-tag form-icon"></i>
     <input type="text" id="contact-subject" placeholder="Inquiry about..." required>
 </div>
 <div class="form-group">
     <label for="contact-message">Your Message</label>
-    <i class="fas fa-comment form-icon"></i>
     <textarea id="contact-message" placeholder="Type your message here..." required></textarea>
 </div>
                     <div class="form-buttons" style="flex-direction: row;">
