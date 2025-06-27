@@ -6,6 +6,8 @@
     <title>Generations - Connecting Families Globally</title>
     <!-- Favicon (optional, but good for a professional look) -->
     <link rel="icon" href="https://placehold.co/32x32/4A6835/FAF8F2?text=GEN" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
 
     <style>
         /* Google Font Import - 'Inter' for a modern, clean look */
@@ -19,6 +21,179 @@
             --secondary-text-highlight: #6B88A6; /* Dusty Blue (now primarily for footer, placeholder, etc.) */
             --ui-elements-slate: #555B63; /* Slate Gray */
             --main-text-dark: #333; /* Dark gray for main text on light background */
+        }
+
+        /* Background decorative elements */
+        .decorative-icons {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .floating-icon {
+            position: absolute;
+            opacity: 0.1;
+            font-size: 2em;
+            color: var(--primary-color);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .floating-icon:nth-child(1) { top: 10%; left: 5%; animation-delay: 0s; }
+        .floating-icon:nth-child(2) { top: 20%; right: 8%; animation-delay: 1s; }
+        .floating-icon:nth-child(3) { top: 60%; left: 3%; animation-delay: 2s; }
+        .floating-icon:nth-child(4) { top: 70%; right: 5%; animation-delay: 3s; }
+        .floating-icon:nth-child(5) { top: 85%; left: 10%; animation-delay: 4s; }
+        .floating-icon:nth-child(6) { top: 40%; right: 12%; animation-delay: 5s; }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* Section background images */
+        #home {
+            background-image: 
+                url('https://images.unsplash.com/photo-1511895426328-dc8714191300?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'),
+                linear-gradient(135deg, rgba(250, 248, 242, 0.95), rgba(250, 248, 242, 0.9));
+            background-blend-mode: overlay;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            position: relative;
+        }
+
+        #about {
+            background-image: 
+                url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'),
+                linear-gradient(135deg, rgba(250, 248, 242, 0.92), rgba(250, 248, 242, 0.88));
+            background-blend-mode: overlay;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        #careers {
+            background-image: 
+                url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'),
+                linear-gradient(135deg, rgba(250, 248, 242, 0.92), rgba(250, 248, 242, 0.88));
+            background-blend-mode: overlay;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        /* Content icons for sections */
+        .section-icon {
+            font-size: 4em;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            opacity: 0.8;
+        }
+
+        .grid-item-icon {
+            font-size: 3em;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .grid-item:nth-child(2) .grid-item-icon {
+            color: var(--accent-color);
+        }
+
+        /* Side decorative elements */
+        .side-decoration {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 1;
+            opacity: 0.05;
+            pointer-events: none;
+        }
+
+        .side-decoration.left {
+            left: -50px;
+        }
+
+        .side-decoration.right {
+            right: -50px;
+        }
+
+        .side-decoration svg {
+            width: 200px;
+            height: 200px;
+            fill: var(--primary-color);
+        }
+
+        /* Enhanced form styling with icons */
+        .form-group {
+            position: relative;
+        }
+
+        .form-icon {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--secondary-text-highlight);
+            font-size: 1.2em;
+            z-index: 2;
+        }
+
+        .form-group input[type="email"],
+        .form-group input[type="password"],
+        .form-group input[type="text"] {
+            padding-left: 45px;
+        }
+
+        /* Career card icons */
+        .job-listing {
+            position: relative;
+        }
+
+        .job-icon {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 2em;
+            color: var(--primary-color);
+            opacity: 0.3;
+        }
+
+        /* Ensure content is above background */
+        .section > .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Additional visual elements */
+        .hero-icons {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .hero-icon {
+            position: absolute;
+            opacity: 0.08;
+            color: var(--primary-color);
+            animation: pulse 4s ease-in-out infinite;
+        }
+
+        .hero-icon:nth-child(1) { top: 15%; left: 10%; font-size: 3em; animation-delay: 0s; }
+        .hero-icon:nth-child(2) { top: 25%; right: 15%; font-size: 2.5em; animation-delay: 1s; }
+        .hero-icon:nth-child(3) { top: 60%; left: 8%; font-size: 2em; animation-delay: 2s; }
+        .hero-icon:nth-child(4) { top: 75%; right: 12%; font-size: 2.8em; animation-delay: 3s; }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.08; transform: scale(1); }
+            50% { opacity: 0.15; transform: scale(1.05); }
         }
 
         /* Base Styles */
@@ -566,7 +741,9 @@
 
     <!-- Navigation Bar -->
     <nav class="navbar">
-        <a href="#home" class="navbar-logo"><img width="100" src="./images/generations-logo.png"></a>
+        <a href="#home" class="navbar-logo">
+    <img width="100" src="./images/generations-logo.png" style="background: none; border: none; box-shadow: none;">
+</a>
         <ul>
             <li><a href="#home" class="active" onclick="setActiveLink(this)">Home</a></li>
             <li><a href="#about" onclick="setActiveLink(this)">About Us</a></li>
@@ -577,11 +754,18 @@
     </nav>
 
     <!-- Home Section (Hero) -->
-    <section id="home" class="flex-center animated-section">
-        <h1>Generations</h1>
-        <p>Connecting the world, one family at a time. Discover your roots, expand your family tree, and build a global network of connections.</p>
-        <a href="#sign-in" class="button">Join Generations Today!</a>
-    </section>
+<section id="home" class="flex-center animated-section">
+    <div class="hero-icons">
+        <i class="fas fa-users hero-icon"></i>
+        <i class="fas fa-heart hero-icon"></i>
+        <i class="fas fa-globe hero-icon"></i>
+        <i class="fas fa-tree hero-icon"></i>
+    </div>
+    <i class="fas fa-users section-icon"></i>
+    <h1>Generations</h1>
+    <p>Connecting the world, one family at a time. Discover your roots, expand your family tree, and build a global network of connections.</p>
+    <a href="#sign-in" class="button">Join Generations Today!</a>
+</section>
 
     <!-- About Us Section -->
     <section id="about" class="section flex-center animated-section">
@@ -589,18 +773,16 @@
             <h2 class="animated-heading">About Generations</h2>
             <p>Generations is a revolutionary web application designed to bridge the gaps between families across the globe. Our unique algorithm cross-references individual nuclear families, helping you discover relatives you never knew you had. We believe in the power of connection and the richness of shared heritage.</p>
 
-            <div class="grid-container" style="text-align: center;">
-                <div class="grid-item">
-                    <h3>Our Mission</h3>
-                    <p>To empower individuals to connect with their extended families, foster a deeper understanding of their lineage, and build a more interconnected global community. We strive to make family history accessible and exciting for everyone.</p>
-                </div>
-                <div class="grid-item">
-                    <h3>How It Works</h3>
-                    <p>Users input their nuclear family data, and our advanced algorithm analyzes commonalities and potential links across our vast database. We then present you with potential family connections, allowing you to explore and verify new relationships securely.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+            <div class="grid-item">
+    <i class="fas fa-bullseye grid-item-icon"></i>
+    <h3>Our Mission</h3>
+    <p>To empower individuals to connect with their extended families, foster a deeper understanding of their lineage, and build a more interconnected global community. We strive to make family history accessible and exciting for everyone.</p>
+</div>
+<div class="grid-item">
+    <i class="fas fa-cogs grid-item-icon"></i>
+    <h3>How It Works</h3>
+    <p>Users input their nuclear family data, and our advanced algorithm analyzes commonalities and potential links across our vast database. We then present you with potential family connections, allowing you to explore and verify new relationships securely.</p>
+</div>
 
     <!-- Sign-in Section -->
     <section id="sign-in" class="section flex-center animated-section">
@@ -610,15 +792,16 @@
                 <form>
                     <p style="text-align: center; margin-bottom: 25px; color: var(--main-text-dark);">
                         Sign in with your email or securely with Google.
-                    </p>
-                    <div class="form-group">
-                        <label for="email">Email Address</label>
-                        <input type="email" id="email" placeholder="you@example.com">
-                    </div>
-                    <div class="form-group">
-                        <label for="password">Password</label>
-                        <input type="password" id="password" placeholder="********">
-                    </div>
+                   <div class="form-group">
+    <label for="email">Email Address</label>
+    <i class="fas fa-envelope form-icon"></i>
+    <input type="email" id="email" placeholder="you@example.com">
+</div>
+<div class="form-group">
+    <label for="password">Password</label>
+    <i class="fas fa-lock form-icon"></i>
+    <input type="password" id="password" placeholder="********">
+</div>
                     <p style="text-align: center; margin: 20px 0; color: var(--secondary-text-highlight); font-weight: 500;">
                         Or
                     </p>
@@ -639,20 +822,28 @@
     <!-- Careers Section -->
     <section id="careers" class="section flex-center animated-section">
         <div class="container">
-            <h2 class="animated-heading">Join Our Family</h2>
+            <h2 class="animated-heading"><i class="fas fa-briefcase section-icon" style="display: block;"></i>Join Our Family</h2>
             <p>Passionate about connecting the world? Generations is a dynamic and innovative startup dedicated to transforming how people discover their family heritage. We're always looking for talented individuals to join our growing team.</p>
 
             <div class="grid-container" style="max-width: 800px;">
                 <div class="job-listing">
-                    <h3>Software Engineer (Backend)</h3>
-                    <p>Develop and maintain our core family-matching algorithm and scalable backend infrastructure. Proficiency in Python/Node.js and database management required.</p>
-                    <a href="#" class="apply-button">Apply Now</a>
-                </div>
-                <div class="job-listing">
-                    <h3>Product Designer (UI/UX)</h3>
-                    <p>Craft intuitive and beautiful user interfaces, ensuring a seamless and engaging experience for our global user base. Experience with Figma/Sketch and user research a plus.</p>
-                    <a href="#" class="apply-button">Apply Now</a>
-                </div>
+    <i class="fas fa-code job-icon"></i>
+    <h3>Software Engineer (Backend)</h3>
+    <p>Develop and maintain our core family-matching algorithm and scalable backend infrastructure. Proficiency in Python/Node.js and database management required.</p>
+    <a href="#" class="apply-button">Apply Now</a>
+</div>
+<div class="job-listing">
+    <i class="fas fa-paint-brush job-icon"></i>
+    <h3>Product Designer (UI/UX)</h3>
+    <p>Craft intuitive and beautiful user interfaces, ensuring a seamless and engaging experience for our global user base. Experience with Figma/Sketch and user research a plus.</p>
+    <a href="#" class="apply-button">Apply Now</a>
+</div>
+<div class="job-listing">
+    <i class="fas fa-users job-icon"></i>
+    <h3>Community Engagement Specialist</h3>
+    <p>Foster a vibrant and supportive community among Generations users. Manage social media, moderate forums, and organize virtual events.</p>
+    <a href="#" class="apply-button">Apply Now</a>
+</div>
                 <div class="job-listing">
                     <h3>Community Engagement Specialist</h3>
                     <p>Foster a vibrant and supportive community among Generations users. Manage social media, moderate forums, and organize virtual events.</p>
@@ -672,21 +863,25 @@
             <div class="form-card">
                 <form>
                     <div class="form-group">
-                        <label for="contact-name">Your Name</label>
-                        <input type="text" id="contact-name" placeholder="John Doe" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="contact-email">Your Email Address</label>
-                        <input type="email" id="contact-email" placeholder="you@example.com" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="contact-subject">Subject</label>
-                        <input type="text" id="contact-subject" placeholder="Inquiry about..." required>
-                    </div>
-                    <div class="form-group">
-                        <label for="contact-message">Your Message</label>
-                        <textarea id="contact-message" placeholder="Type your message here..." required></textarea>
-                    </div>
+    <label for="contact-name">Your Name</label>
+    <i class="fas fa-user form-icon"></i>
+    <input type="text" id="contact-name" placeholder="John Doe" required>
+</div>
+<div class="form-group">
+    <label for="contact-email">Your Email Address</label>
+    <i class="fas fa-envelope form-icon"></i>
+    <input type="email" id="contact-email" placeholder="you@example.com" required>
+</div>
+<div class="form-group">
+    <label for="contact-subject">Subject</label>
+    <i class="fas fa-tag form-icon"></i>
+    <input type="text" id="contact-subject" placeholder="Inquiry about..." required>
+</div>
+<div class="form-group">
+    <label for="contact-message">Your Message</label>
+    <i class="fas fa-comment form-icon"></i>
+    <textarea id="contact-message" placeholder="Type your message here..." required></textarea>
+</div>
                     <div class="form-buttons" style="flex-direction: row;">
                         <button type="submit" class="button">Send Message</button>
                     </div>
@@ -834,6 +1029,28 @@
             });
         });
     </script>
-
+<!-- Side decorative elements -->
+<div class="side-decoration left">
+    <svg viewBox="0 0 200 200">
+        <circle cx="100" cy="50" r="30" opacity="0.3"/>
+        <circle cx="70" cy="100" r="25" opacity="0.2"/>
+        <circle cx="130" cy="100" r="25" opacity="0.2"/>
+        <circle cx="50" cy="150" r="20" opacity="0.1"/>
+        <circle cx="100" cy="150" r="20" opacity="0.1"/>
+        <circle cx="150" cy="150" r="20" opacity="0.1"/>
+        <path d="M100 80 L70 125 M100 80 L130 125 M70 125 L50 170 M70 125 L100 170 M130 125 L100 170 M130 125 L150 170" stroke="currentColor" stroke-width="2" opacity="0.2"/>
+    </svg>
+</div>
+<div class="side-decoration right">
+    <svg viewBox="0 0 200 200">
+        <circle cx="100" cy="50" r="30" opacity="0.3"/>
+        <circle cx="70" cy="100" r="25" opacity="0.2"/>
+        <circle cx="130" cy="100" r="25" opacity="0.2"/>
+        <circle cx="50" cy="150" r="20" opacity="0.1"/>
+        <circle cx="100" cy="150" r="20" opacity="0.1"/>
+        <circle cx="150" cy="150" r="20" opacity="0.1"/>
+        <path d="M100 80 L70 125 M100 80 L130 125 M70 125 L50 170 M70 125 L100 170 M130 125 L100 170 M130 125 L150 170" stroke="currentColor" stroke-width="2" opacity="0.2"/>
+    </svg>
+</div>
 </body>
 </html>
