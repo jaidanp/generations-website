@@ -66,14 +66,21 @@
         }
 
         #about {
-            background-image: 
-                url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'),
-                linear-gradient(135deg, rgba(250, 248, 242, 0.92), rgba(250, 248, 242, 0.88));
-            background-blend-mode: overlay;
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-        }
+    background-image: 
+        url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'),
+        linear-gradient(135deg, rgba(250, 248, 242, 0.92), rgba(250, 248, 242, 0.88));
+    background-blend-mode: overlay;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+@media (max-width: 480px) {
+    #about {
+        background-image: none;
+        background-color: var(--background-ivory);
+    }
+}
 
         #careers {
             background-image: 
@@ -772,29 +779,31 @@
 
         @media (max-width: 480px) {
     .navbar {
-        flex-direction: row; /* Keep horizontal layout */
-        padding: 5px 10px; /* Smaller padding */
-        min-height: 50px; /* Smaller height on mobile */
-        width: calc(100% - 30px); /* Adjust width for mobile padding */
+        flex-direction: column; /* Stack logo and nav vertically */
+        padding: 8px 10px; /* Increase padding for better spacing */
+        min-height: auto; /* Allow navbar to expand naturally */
+        width: calc(100% - 20px); /* Adjust width for mobile padding */
+        gap: 10px; /* Add gap between logo and nav */
     }
     .navbar-logo {
         margin-bottom: 0; /* Remove margin */
     }
     .navbar-logo img {
-        height: 30px; /* Smaller logo on mobile */
-        max-width: 80px;
+        height: 40px; /* Slightly bigger logo on mobile */
+        max-width: 120px; /* Increase max width */
     }
     .navbar ul {
         flex-wrap: wrap; /* Allow nav links to wrap */
         justify-content: center;
-        gap: 8px; /* Smaller gap */
+        gap: 15px; /* Increase gap for better spacing */
+        width: 100%; /* Full width for nav links */
     }
     .navbar a {
-        padding: 6px 10px; /* Smaller padding for mobile nav */
-        font-size: 0.8em; /* Smaller font */
+        padding: 8px 12px; /* Increase padding for mobile nav */
+        font-size: 0.9em; /* Slightly larger font */
     }
     #home {
-        padding-top: 70px; /* Account for smaller navbar */
+        padding-top: 120px; /* Account for taller navbar */
     }
     #home h1 {
         font-size: 2.8em;
@@ -808,11 +817,12 @@
         font-size: 0.9em;
     }
     .section {
-        padding: 60px 20px; /* Better padding for mobile */
+        padding: 60px 10px; /* Reduce side padding */
         text-align: center; /* Ensure centering */
     }
     .section .container {
-        padding: 0 15px; /* Add container padding */
+        padding: 0; /* Remove container padding */
+        max-width: 100%; /* Full width on mobile */
     }
     .section h2 {
         font-size: 2.2em;
@@ -825,14 +835,15 @@
     }
     .form-card {
         padding: 25px 20px; /* Adjust form card padding */
-        margin: 0 15px; /* Add side margins */
+        margin: 0 10px; /* Reduce side margins */
+        max-width: calc(100% - 20px); /* Ensure it fits within screen */
     }
     .form-group input,
     .form-group textarea {
         padding: 10px;
     }
     .flex-center {
-        padding: 20px 15px; /* Add horizontal padding to flex-center */
+        padding: 20px 10px; /* Reduce horizontal padding to flex-center */
     }
     /* Form buttons already stacked via flex-direction: column in .form-buttons */
     .form-buttons .button {
@@ -842,7 +853,7 @@
         padding: 0 10px; /* Add padding to grid container */
     }
     .grid-item {
-        margin: 0 10px 20px 10px; /* Add side margins to grid items */
+        margin: 0 5px 20px 5px; /* Reduce side margins to grid items */
     }
 }
     </style>
