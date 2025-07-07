@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,20 +12,28 @@
 
     <style>
         /* Google Font Import - 'Inter' for a modern, clean look */
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap');
 
-            *, *::before, *::after {
-        box-sizing: border-box;
-}
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
 
         /* New Color Palette Variables for easier management */
         :root {
-            --primary-color: #4A6835; /* Deep Olive Green */
-            --accent-color: #C4623F;   /* Warm Rust */
-            --background-ivory: #FAF8F2; /* Soft Ivory */
-            --secondary-text-highlight: #6B88A6; /* Dusty Blue (now primarily for footer, placeholder, etc.) */
-            --ui-elements-slate: #555B63; /* Slate Gray */
-            --main-text-dark: #333; /* Dark gray for main text on light background */
+            --primary-color: #4A6835;
+            /* Deep Olive Green */
+            --accent-color: #C4623F;
+            /* Warm Rust */
+            --background-ivory: #FAF8F2;
+            /* Soft Ivory */
+            --secondary-text-highlight: #6B88A6;
+            /* Dusty Blue (now primarily for footer, placeholder, etc.) */
+            --ui-elements-slate: #555B63;
+            /* Slate Gray */
+            --main-text-dark: #333;
+            /* Dark gray for main text on light background */
         }
 
         /* Background decorative elements */
@@ -45,49 +54,96 @@
             animation: float 6s ease-in-out infinite;
         }
 
-        .floating-icon:nth-child(1) { top: 10%; left: 5%; animation-delay: 0s; }
-        .floating-icon:nth-child(2) { top: 20%; right: 8%; animation-delay: 1s; }
-        .floating-icon:nth-child(3) { top: 60%; left: 3%; animation-delay: 2s; }
-        .floating-icon:nth-child(4) { top: 70%; right: 5%; animation-delay: 3s; }
-        .floating-icon:nth-child(5) { top: 85%; left: 10%; animation-delay: 4s; }
-        .floating-icon:nth-child(6) { top: 40%; right: 12%; animation-delay: 5s; }
+        .floating-icon:nth-child(1) {
+            top: 10%;
+            left: 5%;
+            animation-delay: 0s;
+        }
+
+        .floating-icon:nth-child(2) {
+            top: 20%;
+            right: 8%;
+            animation-delay: 1s;
+        }
+
+        .floating-icon:nth-child(3) {
+            top: 60%;
+            left: 3%;
+            animation-delay: 2s;
+        }
+
+        .floating-icon:nth-child(4) {
+            top: 70%;
+            right: 5%;
+            animation-delay: 3s;
+        }
+
+        .floating-icon:nth-child(5) {
+            top: 85%;
+            left: 10%;
+            animation-delay: 4s;
+        }
+
+        .floating-icon:nth-child(6) {
+            top: 40%;
+            right: 12%;
+            animation-delay: 5s;
+        }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
+
+            0%,
+            100% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
         }
 
         /* Section background images */
         #home {
-            background-image: 
-                url('https://images.unsplash.com/photo-1511895426328-dc8714191300?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'),
-                linear-gradient(135deg, rgba(250, 248, 242, 0.95), rgba(250, 248, 242, 0.9));
+            background-color: var(--background-ivory);
+            position: relative;
+            padding-top: 80px;
+        }
+
+        #home::before {
+            content: '';
+            position: absolute;
+            top: 80px;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('./images/background-tree-generations.png');
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            opacity: 0.3;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        #about {
+            background-image:
+                url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'),
+                linear-gradient(135deg, rgba(250, 248, 242, 0.92), rgba(250, 248, 242, 0.88));
             background-blend-mode: overlay;
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
-            position: relative;
         }
 
-        #about {
-    background-image: 
-        url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'),
-        linear-gradient(135deg, rgba(250, 248, 242, 0.92), rgba(250, 248, 242, 0.88));
-    background-blend-mode: overlay;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-}
-
-@media (max-width: 480px) {
-    #about {
-        background-image: none;
-        background-color: var(--background-ivory);
-    }
-}
+        @media (max-width: 480px) {
+            #about {
+                background-image: none;
+                background-color: var(--background-ivory);
+            }
+        }
 
         #careers {
-            background-image: 
+            background-image:
                 url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'),
                 linear-gradient(135deg, rgba(250, 248, 242, 0.92), rgba(250, 248, 242, 0.88));
             background-blend-mode: overlay;
@@ -174,7 +230,7 @@
         }
 
         /* Ensure content is above background */
-        .section > .container {
+        .section>.container {
             position: relative;
             z-index: 2;
         }
@@ -197,42 +253,75 @@
             animation: pulse 4s ease-in-out infinite;
         }
 
-        .hero-icon:nth-child(1) { top: 15%; left: 10%; font-size: 3em; animation-delay: 0s; }
-        .hero-icon:nth-child(2) { top: 25%; right: 15%; font-size: 2.5em; animation-delay: 1s; }
-        .hero-icon:nth-child(3) { top: 60%; left: 8%; font-size: 2em; animation-delay: 2s; }
-        .hero-icon:nth-child(4) { top: 75%; right: 12%; font-size: 2.8em; animation-delay: 3s; }
+        .hero-icon:nth-child(1) {
+            top: 15%;
+            left: 10%;
+            font-size: 3em;
+            animation-delay: 0s;
+        }
+
+        .hero-icon:nth-child(2) {
+            top: 25%;
+            right: 15%;
+            font-size: 2.5em;
+            animation-delay: 1s;
+        }
+
+        .hero-icon:nth-child(3) {
+            top: 60%;
+            left: 8%;
+            font-size: 2em;
+            animation-delay: 2s;
+        }
+
+        .hero-icon:nth-child(4) {
+            top: 75%;
+            right: 12%;
+            font-size: 2.8em;
+            animation-delay: 3s;
+        }
 
         @keyframes pulse {
-            0%, 100% { opacity: 0.08; transform: scale(1); }
-            50% { opacity: 0.15; transform: scale(1.05); }
+
+            0%,
+            100% {
+                opacity: 0.08;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.15;
+                transform: scale(1.05);
+            }
         }
 
         /* Base Styles */
-        html, body {
-    font-family: 'Inter', sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    background-color: var(--background-ivory);
-    color: var(--main-text-dark);
-    scroll-behavior: smooth;
-    line-height: 1.6;
-    overflow-x: hidden;
-    width: 100%;
-    max-width: 100vw;
-}
+        html,
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: var(--background-ivory);
+            color: var(--main-text-dark);
+            scroll-behavior: smooth;
+            line-height: 1.6;
+            overflow-x: hidden;
+            width: 100%;
+            max-width: 100vw;
+        }
 
-body {
-    font-family: 'Inter', sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    background-color: var(--background-ivory);
-    color: var(--main-text-dark);
-    scroll-behavior: smooth;
-    line-height: 1.6;
-    overflow-x: hidden;
-}
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: var(--background-ivory);
+            color: var(--main-text-dark);
+            scroll-behavior: smooth;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
         /* Utility Classes */
         .container {
@@ -248,22 +337,34 @@ body {
             justify-content: center;
             min-height: 100vh;
             text-align: center;
-            padding: 20px; /* Default padding for all sections */
+            padding: 20px;
+            /* Default padding for all sections */
         }
 
         /* Subtle Animations for Entrance */
         /* Applied to sections as they scroll into view */
         @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* Enhanced animated-section for more distinct scroll effect */
         .animated-section {
-            opacity: 0; /* Hidden by default */
-            transform: translateY(40px) scale(0.98); /* Start lower and slightly smaller */
-            transition: opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smoother and longer transition */
+            opacity: 0;
+            /* Hidden by default */
+            transform: translateY(40px) scale(0.98);
+            /* Start lower and slightly smaller */
+            transition: opacity 1s cubic-bezier(0.25, 0.46, 0.45, 0.94), transform 1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            /* Smoother and longer transition */
         }
+
         .animated-section.is-visible {
             opacity: 1;
             transform: translateY(0) scale(1);
@@ -273,8 +374,10 @@ body {
         .animated-heading {
             opacity: 0;
             transform: translateY(10px);
-            transition: opacity 0.6s ease-out 0.2s, transform 0.6s ease-out 0.2s; /* Delayed animation */
+            transition: opacity 0.6s ease-out 0.2s, transform 0.6s ease-out 0.2s;
+            /* Delayed animation */
         }
+
         .animated-section.is-visible .animated-heading {
             opacity: 1;
             transform: translateY(0);
@@ -283,190 +386,252 @@ body {
 
         /* Navigation Bar */
         .navbar {
-    background-color: #D4B896;
-    padding: 8px 20px;
-    position: fixed;
-    width: 100%;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    transition: transform 0.3s ease-out, background-color 0.3s ease, box-shadow 0.3s ease;
-    height: 60px;
-    overflow: hidden;
-    box-sizing: border-box;
-}
+            background-color: #FFFFED;
+            padding: 12px 20px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: transform 0.3s ease-out, background-color 0.3s ease, box-shadow 0.3s ease;
+            height: 80px;
+            overflow: hidden;
+            box-sizing: border-box;
+        }
 
 
         /* Class to hide the navbar */
         .navbar-hidden {
-            transform: translateY(-100%); /* Move navbar completely up and out of view */
+            transform: translateY(-100%);
+            /* Move navbar completely up and out of view */
         }
 
         /* Logo Link (now back to simple text link) */
         .navbar-logo {
-    font-size: 1.8em;
-    font-weight: 800;
-    color: var(--background-ivory); /* Ivory for logo text */
-    text-decoration: none;
-    padding: 0;
-    background: none !important;
-    border-radius: 0;
-    letter-spacing: -0.5px;
-    transition: none; /* Remove all transitions */
-    border: none !important;
-    box-shadow: none !important;
-    outline: none !important;
-}
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            padding: 0;
+            margin-right: 20px;
+            transition: transform 0.2s ease;
+            background: none !important;
+            border: none !important;
+            box-shadow: none !important;
+        }
 
-.navbar-logo::before,
-.navbar-logo::after {
-    display: none !important;
-}
-
-.navbar-logo:hover {
-    color: var(--background-ivory) !important;
-    background: none !important;
-    border: none !important;
-    box-shadow: none !important;
-    transform: none !important;
-}
-
-.navbar-logo img {
-    height: 60px; /* Control logo image height */
-    width: 300px; /* Set fixed width - adjust this number as needed */
-    max-width: none; /* Remove max-width constraint */
-    object-fit: contain; /* This keeps the logo from being distorted */
-}
+        .navbar-logo .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6em;
+            font-weight: 700;
+            color: #8B7355;
+            letter-spacing: -0.5px;
+            margin: 0;
+        }
 
         .navbar-logo:hover {
-    color: var(--primary-color); /* Hover effect for logo */
-    background: none !important;
-}
+            transform: scale(1.05);
+        }
+
+        .navbar-logo:hover .logo-text {
+            color: #A0926B;
+        }
+
+        .navbar-logo::before,
+        .navbar-logo::after {
+            display: none !important;
+        }
+
+        .navbar-logo img {
+            height: 50px;
+            width: auto;
+            object-fit: contain;
+            background: none !important;
+            border: none !important;
+            box-shadow: none !important;
+        }
 
         .navbar ul {
             list-style: none;
             margin: 0;
             padding: 0;
             display: flex;
-            justify-content: center; /* Centered relative to its container */
-            gap: 20px; /* Reduced gap to accommodate more links */
+            justify-content: center;
+            /* Centered relative to its container */
+            gap: 20px;
+            /* Reduced gap to accommodate more links */
         }
 
         .navbar a {
-            color: #2C3E50; /* Dark blue-gray for better contrast on cream */
+            color: var(--primary-color);
+            /* Dark blue-gray for better contrast on cream */
             text-decoration: none;
             font-weight: 500;
-            padding: 10px 15px; /* Adjusted padding for more links */
-            border-radius: 6px; /* Less rounded corners */
-            position: relative; /* For underline animation */
-            overflow: hidden; /* Hide overflow of pseudo-element */
+            padding: 10px 15px;
+            /* Adjusted padding for more links */
+            border-radius: 6px;
+            /* Less rounded corners */
+            position: relative;
+            /* For underline animation */
+            overflow: hidden;
+            /* Hide overflow of pseudo-element */
             transition: all 0.2s ease-in-out;
-            font-size: 0.95em; /* Slightly smaller font for more links */
-            white-space: nowrap; /* Prevent wrapping for nav links */
+            font-size: 0.95em;
+            /* Slightly smaller font for more links */
+            white-space: nowrap;
+            /* Prevent wrapping for nav links */
         }
 
         .navbar a::before {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 0; /* Starts hidden */
-    height: 2px;
-    transition: width 0.3s ease-out;
-}
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            /* Starts hidden */
+            height: 2px;
+            transition: width 0.3s ease-out;
+        }
 
-/* Prevent underline on logo */
-.navbar-logo::before {
-    display: none !important;
-}
+        /* Prevent underline on logo */
+        .navbar-logo::before {
+            display: none !important;
+        }
+
         .navbar a:hover::before {
-            width: calc(100% - 20px); /* Grow to full width minus padding */
+            width: calc(100% - 20px);
+            /* Grow to full width minus padding */
         }
 
         .navbar a:hover {
-            background-color: rgba(255, 255, 255, 0.1); /* Subtle hover background */
-            color: #1A252F; /* Darker text on hover */
+            background-color: rgba(255, 255, 255, 0.1);
+            /* Subtle hover background */
+            color: #1A252F;
+            /* Darker text on hover */
             transform: translateY(-2px);
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
 
         .navbar a.active {
-            background-color: var(--primary-color); /* Deep Olive Green for active */
+            background-color: var(--primary-color);
+            /* Deep Olive Green for active */
             color: var(--background-ivory);
-            box-shadow: 0 4px 12px rgba(74, 104, 53, 0.3); /* Shadow matching primary */
+            box-shadow: 0 4px 12px rgba(74, 104, 53, 0.3);
+            /* Shadow matching primary */
         }
-        .navbar a.active::before { /* Ensure active link has underline */
+
+        .navbar a.active::before {
+            /* Ensure active link has underline */
             width: calc(100% - 20px);
         }
 
         /* Additional background images for visual appeal */
-#sign-in {
-    background-image: 
-        url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'),
-        linear-gradient(135deg, rgba(250, 248, 242, 0.92), rgba(250, 248, 242, 0.88));
-    background-blend-mode: overlay;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-}
+        #sign-in {
+            background-image:
+                url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'),
+                linear-gradient(135deg, rgba(250, 248, 242, 0.92), rgba(250, 248, 242, 0.88));
+            background-blend-mode: overlay;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
 
-#contact-us {
-    background-image: 
-        url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'),
-        linear-gradient(135deg, rgba(250, 248, 242, 0.92), rgba(250, 248, 242, 0.88));
-    background-blend-mode: overlay;
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-}
+        #contact-us {
+            background-image:
+                url('https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'),
+                linear-gradient(135deg, rgba(250, 248, 242, 0.92), rgba(250, 248, 242, 0.88));
+            background-blend-mode: overlay;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
 
-/* Enhanced decorative elements */
-.content-decoration {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 1;
-    overflow: hidden;
-}
+        /* Enhanced decorative elements */
+        .content-decoration {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
 
-.content-decoration .floating-icon {
-    position: absolute;
-    opacity: 0.08;
-    font-size: 2.5em;
-    color: var(--primary-color);
-    animation: gentleFloat 8s ease-in-out infinite;
-}
+        .content-decoration .floating-icon {
+            position: absolute;
+            opacity: 0.08;
+            font-size: 2.5em;
+            color: var(--primary-color);
+            animation: gentleFloat 8s ease-in-out infinite;
+        }
 
-.content-decoration .floating-icon:nth-child(1) { top: 15%; left: 10%; animation-delay: 0s; }
-.content-decoration .floating-icon:nth-child(2) { top: 30%; right: 8%; animation-delay: 2s; }
-.content-decoration .floating-icon:nth-child(3) { top: 50%; left: 5%; animation-delay: 4s; }
-.content-decoration .floating-icon:nth-child(4) { top: 70%; right: 12%; animation-delay: 6s; }
-.content-decoration .floating-icon:nth-child(5) { top: 85%; left: 15%; animation-delay: 1s; }
+        .content-decoration .floating-icon:nth-child(1) {
+            top: 15%;
+            left: 10%;
+            animation-delay: 0s;
+        }
 
-@keyframes gentleFloat {
-    0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.08; }
-    25% { transform: translateY(-8px) rotate(2deg); opacity: 0.12; }
-    50% { transform: translateY(-15px) rotate(-1deg); opacity: 0.15; }
-    75% { transform: translateY(-8px) rotate(1deg); opacity: 0.12; }
-}
+        .content-decoration .floating-icon:nth-child(2) {
+            top: 30%;
+            right: 8%;
+            animation-delay: 2s;
+        }
+
+        .content-decoration .floating-icon:nth-child(3) {
+            top: 50%;
+            left: 5%;
+            animation-delay: 4s;
+        }
+
+        .content-decoration .floating-icon:nth-child(4) {
+            top: 70%;
+            right: 12%;
+            animation-delay: 6s;
+        }
+
+        .content-decoration .floating-icon:nth-child(5) {
+            top: 85%;
+            left: 15%;
+            animation-delay: 1s;
+        }
+
+        @keyframes gentleFloat {
+
+            0%,
+            100% {
+                transform: translateY(0px) rotate(0deg);
+                opacity: 0.08;
+            }
+
+            25% {
+                transform: translateY(-8px) rotate(2deg);
+                opacity: 0.12;
+            }
+
+            50% {
+                transform: translateY(-15px) rotate(-1deg);
+                opacity: 0.15;
+            }
+
+            75% {
+                transform: translateY(-8px) rotate(1deg);
+                opacity: 0.12;
+            }
+        }
 
 
         /* Hero Section (Home) */
-        #home {
-    background: linear-gradient(135deg, var(--background-ivory), rgba(var(--background-ivory), 0.95)); /* Subtle ivory gradient */
-    padding-top: 80px; /* Reduced padding */
-    animation: fadeInDown 1.2s ease-out; /* Main hero animation */
-    color: var(--main-text-dark); /* Ensure text is dark on light background */
-}
+        #home .container {
+            position: relative;
+            z-index: 3;
+        }
 
         #home h1 {
             font-size: 4em;
@@ -476,7 +641,8 @@ body {
             text-shadow: none;
             letter-spacing: -1px;
             /* Animation specifically for H1 in hero */
-            animation: fadeInDown 1.2s ease-out; /* Use a specific keyframe for hero elements */
+            animation: fadeInDown 1.2s ease-out;
+            /* Use a specific keyframe for hero elements */
         }
 
         #home p {
@@ -486,44 +652,56 @@ body {
             margin-bottom: 40px;
             color: var(--main-text-dark);
             /* Animation specifically for P in hero */
-            animation: fadeInDown 1.5s ease-out; /* Delayed slightly */
+            animation: fadeInDown 1.5s ease-out;
+            /* Delayed slightly */
         }
 
         .button {
-            background-color: var(--primary-color); /* Deep Olive Green */
-            color: var(--background-ivory); /* Ivory text */
+            background-color: var(--primary-color);
+            /* Deep Olive Green */
+            color: var(--background-ivory);
+            /* Ivory text */
             padding: 14px 30px;
             border: none;
-            border-radius: 6px; /* Less rounded */
+            border-radius: 6px;
+            /* Less rounded */
             font-size: 1em;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.2s ease-in-out; /* Smoother transition for all button properties */
+            transition: all 0.2s ease-in-out;
+            /* Smoother transition for all button properties */
             box-shadow: 0 4px 15px rgba(74, 104, 53, 0.4);
             letter-spacing: 0.5px;
-            display: inline-flex; /* For icon and text alignment */
+            display: inline-flex;
+            /* For icon and text alignment */
             align-items: center;
             justify-content: center;
         }
 
         .button:hover {
-            background-color: #3f582d; /* Slightly darker olive on hover */
+            background-color: #3f582d;
+            /* Slightly darker olive on hover */
             transform: translateY(-3px);
             box-shadow: 0 6px 20px rgba(74, 104, 53, 0.6);
         }
 
         .button:active {
-            transform: translateY(0); /* Returns to original position */
-            box-shadow: 0 2px 10px rgba(74, 104, 53, 0.3); /* Smaller shadow on click */
-            background-color: #3f582d; /* Stays darker on click */
+            transform: translateY(0);
+            /* Returns to original position */
+            box-shadow: 0 2px 10px rgba(74, 104, 53, 0.3);
+            /* Smaller shadow on click */
+            background-color: #3f582d;
+            /* Stays darker on click */
         }
 
         /* Section Styling */
         .section {
-            padding: 100px 20px; /* Default padding for desktop */
+            padding: 100px 20px;
+            /* Default padding for desktop */
             text-align: center;
             /* Removed direct animation here, using .animated-section for JS-triggered animation */
-            color: var(--main-text-dark); /* Ensure text is dark on light background */
+            color: var(--main-text-dark);
+            /* Ensure text is dark on light background */
         }
 
         .section h2 {
@@ -545,8 +723,10 @@ body {
 
         /* About Us Section */
         #about {
-            background-color: var(--background-ivory); /* Pure ivory for consistency */
-            border-top: 1px solid rgba(0, 0, 0, 0.05); /* Very subtle separator */
+            background-color: var(--background-ivory);
+            /* Pure ivory for consistency */
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            /* Very subtle separator */
             border-bottom: 1px solid rgba(0, 0, 0, 0.05);
         }
 
@@ -559,19 +739,27 @@ body {
         }
 
         .grid-item {
-            background-color: var(--background-ivory); /* Cards are same as background, relies on shadow/border */
+            background-color: var(--background-ivory);
+            /* Cards are same as background, relies on shadow/border */
             padding: 35px;
-            border-radius: 8px; /* Subtle rounding */
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1); /* Lighter shadow for sophistication */
+            border-radius: 8px;
+            /* Subtle rounding */
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            /* Lighter shadow for sophistication */
             text-align: left;
-            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease; /* Smooth transition for hover */
-            border: 1px solid rgba(var(--ui-elements-slate), 0.1); /* Very subtle border */
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+            /* Smooth transition for hover */
+            border: 1px solid rgba(var(--ui-elements-slate), 0.1);
+            /* Very subtle border */
         }
 
         .grid-item:hover {
-            transform: translateY(-8px) scale(1.01); /* Lift and subtle scale */
-            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2); /* More pronounced shadow on hover */
-            background-color: #fcfbf7; /* Slight background tint on hover */
+            transform: translateY(-8px) scale(1.01);
+            /* Lift and subtle scale */
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+            /* More pronounced shadow on hover */
+            background-color: #fcfbf7;
+            /* Slight background tint on hover */
         }
 
         .grid-item h3 {
@@ -594,18 +782,22 @@ body {
 
         /* Sign-in Section */
         #sign-in {
-            background-color: var(--background-ivory); /* Consistent ivory background */
+            background-color: var(--background-ivory);
+            /* Consistent ivory background */
         }
 
         .form-card {
-            background-color: var(--background-ivory); /* Card background same as body */
+            background-color: var(--background-ivory);
+            /* Card background same as body */
             padding: 45px;
             border-radius: 8px;
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
             max-width: 450px;
             width: 100%;
-            text-align: left; /* Keep text aligned left for labels/inputs */
-            margin: 0 auto; /* Ensures the form card itself is centered */
+            text-align: left;
+            /* Keep text aligned left for labels/inputs */
+            margin: 0 auto;
+            /* Ensures the form card itself is centered */
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             border: 1px solid rgba(var(--ui-elements-slate), 0.1);
         }
@@ -621,57 +813,73 @@ body {
 
         .form-group label {
             display: block;
-            margin-bottom: 8px; /* Slightly less margin */
+            margin-bottom: 8px;
+            /* Slightly less margin */
             font-weight: 600;
             color: var(--main-text-dark);
         }
 
         .form-group input[type="email"],
         .form-group input[type="password"],
-        .form-group textarea { /* Added textarea for contact form */
+        .form-group textarea {
+            /* Added textarea for contact form */
             width: calc(100% - 28px);
             padding: 14px;
-            border: 1px solid var(--secondary-text-highlight); /* Dusty Blue border */
+            border: 1px solid var(--secondary-text-highlight);
+            /* Dusty Blue border */
             border-radius: 6px;
-            background-color: #FFF; /* Pure white input background */
+            background-color: #FFF;
+            /* Pure white input background */
             color: var(--main-text-dark);
-            transition: all 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for focus */
+            transition: all 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            /* Smooth transition for focus */
             box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
         }
 
         .form-group input[type="email"]::placeholder,
         .form-group input[type="password"]::placeholder,
         .form-group textarea::placeholder {
-            color: var(--secondary-text-highlight); /* Dusty Blue placeholder */
+            color: var(--secondary-text-highlight);
+            /* Dusty Blue placeholder */
         }
 
         .form-group input[type="email"]:focus,
         .form-group input[type="password"]:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color: var(--primary-color); /* Deep Olive Green on focus */
-            box-shadow: 0 0 0 5px rgba(74, 104, 53, 0.4); /* Larger, more prominent glow */
-            background-color: #FCFBF7; /* Slightly off-white on focus */
+            border-color: var(--primary-color);
+            /* Deep Olive Green on focus */
+            box-shadow: 0 0 0 5px rgba(74, 104, 53, 0.4);
+            /* Larger, more prominent glow */
+            background-color: #FCFBF7;
+            /* Slightly off-white on focus */
         }
+
         .form-group textarea {
-            min-height: 120px; /* Larger text area */
-            resize: vertical; /* Allow vertical resizing */
+            min-height: 120px;
+            /* Larger text area */
+            resize: vertical;
+            /* Allow vertical resizing */
         }
 
         /* Text inside form card that needs to be centered */
         .form-card p {
-            text-align: center; /* Explicitly center these paragraphs */
+            text-align: center;
+            /* Explicitly center these paragraphs */
         }
 
         .form-buttons {
             display: flex;
-            flex-direction: column; /* Stack buttons vertically */
-            gap: 15px; /* Space between stacked buttons */
+            flex-direction: column;
+            /* Stack buttons vertically */
+            gap: 15px;
+            /* Space between stacked buttons */
             margin-top: 30px;
         }
 
         .form-buttons .button {
-            width: 100%; /* Full width for stacked buttons */
+            width: 100%;
+            /* Full width for stacked buttons */
             padding: 12px 25px;
             font-size: 1em;
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
@@ -679,19 +887,25 @@ body {
         }
 
         .button.google-signin {
-    background-color: #D4B896; /* Warm tan color */
-    color: #333; /* Dark text for better contrast on tan */
-    box-shadow: 0 3px 10px rgba(212, 184, 150, 0.3);
-    margin-top: 20px; /* Add margin to separate from input fields */
-}
+            background-color: #D4B896;
+            /* Warm tan color */
+            color: #333;
+            /* Dark text for better contrast on tan */
+            box-shadow: 0 3px 10px rgba(212, 184, 150, 0.3);
+            margin-top: 20px;
+            /* Add margin to separate from input fields */
+        }
 
-.button.google-signin:hover {
-    background-color: #C4A775; /* Slightly darker tan on hover */
-}
+        .button.google-signin:hover {
+            background-color: #C4A775;
+            /* Slightly darker tan on hover */
+        }
 
         .button.google-signin .icon {
-            margin-right: 8px; /* Space between icon and text */
-            font-size: 1.2em; /* Adjust icon size */
+            margin-right: 8px;
+            /* Space between icon and text */
+            font-size: 1.2em;
+            /* Adjust icon size */
             display: inline-block;
             vertical-align: middle;
             width: 1em;
@@ -705,25 +919,34 @@ body {
             border-radius: 8px;
             padding: 25px;
             margin-bottom: 20px;
-            text-align: left; /* Keep job listing text left-aligned */
-            box-shadow: 0 3px 10px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease; /* Smooth transition for hover */
+            text-align: left;
+            /* Keep job listing text left-aligned */
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+            /* Smooth transition for hover */
         }
+
         #careers .job-listing:hover {
-            transform: translateY(-8px) scale(1.01); /* Lift and subtle scale */
-            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2); /* More pronounced shadow on hover */
-            background-color: #fcfbf7; /* Slight background tint on hover */
+            transform: translateY(-8px) scale(1.01);
+            /* Lift and subtle scale */
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.2);
+            /* More pronounced shadow on hover */
+            background-color: #fcfbf7;
+            /* Slight background tint on hover */
         }
+
         #careers .job-listing h3 {
             color: var(--primary-color);
             font-size: 1.5em;
             margin-bottom: 10px;
         }
+
         #careers .job-listing p {
             color: var(--main-text-dark);
             font-size: 0.9em;
             margin-bottom: 10px;
         }
+
         #careers .apply-button {
             background-color: var(--accent-color);
             color: var(--background-ivory);
@@ -733,6 +956,7 @@ body {
             font-weight: 600;
             transition: background-color 0.2s ease;
         }
+
         #careers .apply-button:hover {
             background-color: #af5730;
         }
@@ -740,34 +964,164 @@ body {
 
         /* Footer */
         .footer {
-            background-color: var(--ui-elements-slate); /* Slate Gray footer */
-            color: var(--secondary-text-highlight); /* Dusty Blue text */
+            background-color: var(--ui-elements-slate);
+            /* Slate Gray footer */
+            color: var(--secondary-text-highlight);
+            /* Dusty Blue text */
             text-align: center;
             padding: 30px 20px;
             margin-top: 60px;
             box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2);
             font-size: 0.9em;
         }
+
         .footer a {
-            color: var(--background-ivory); /* Link color in footer */
+            color: var(--background-ivory);
+            /* Link color in footer */
             text-decoration: none;
             position: relative;
             transition: color 0.2s ease, transform 0.2s ease;
         }
+
         .footer a:hover {
             color: var(--primary-color);
-            text-decoration: underline; /* Keep underline for clearer link behavior */
-            transform: translateY(-2px); /* Subtle lift */
+            text-decoration: underline;
+            /* Keep underline for clearer link behavior */
+            transform: translateY(-2px);
+            /* Subtle lift */
         }
 
+        /* Sticky Invite Footer */
+        .sticky-invite-footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(135deg, var(--primary-color), #3f582d);
+            color: var(--background-ivory);
+            padding: 15px 20px;
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+            z-index: 999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(10px);
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .sticky-invite-footer.hidden {
+            transform: translateY(100%);
+        }
+
+        .invite-text {
+            font-size: 1em;
+            font-weight: 500;
+            margin: 0 15px 0 0;
+            /* Changed from margin: 0; */
+            color: var(--background-ivory);
+        }
+
+        .invite-input-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .invite-code-input {
+            padding: 10px 15px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--background-ivory);
+            font-size: 0.9em;
+            width: 200px;
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+        }
+
+        .invite-code-input::placeholder {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .invite-code-input:focus {
+            outline: none;
+            border-color: var(--background-ivory);
+            background: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 0 0 3px rgba(250, 248, 242, 0.3);
+        }
+
+        .invite-cta-button {
+            background: var(--accent-color);
+            color: var(--background-ivory);
+            border: none;
+            padding: 12px 20px;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9em;
+            white-space: nowrap;
+        }
+
+        .invite-cta-button:hover {
+            background: #af5730;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(196, 98, 63, 0.4);
+        }
+
+        .close-invite-footer {
+            background: none;
+            border: none;
+            color: var(--background-ivory);
+            font-size: 1.2em;
+            cursor: pointer;
+            padding: 5px;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+            margin-left: 15px;
+        }
+
+        .close-invite-footer:hover {
+            opacity: 1;
+        }
+
+        /* Responsive adjustments for sticky footer */
+        @media (max-width: 768px) {
+            .sticky-invite-footer {
+                flex-direction: column;
+                gap: 15px;
+                padding: 20px 15px;
+                text-align: center;
+            }
+
+            .invite-input-group {
+                flex-direction: column;
+                gap: 12px;
+                width: 100%;
+            }
+
+            .invite-code-input {
+                width: 100%;
+                max-width: 280px;
+            }
+
+            .invite-cta-button {
+                width: 100%;
+                max-width: 280px;
+            }
+        }
 
         /* Responsive Adjustments */
         @media (min-width: 768px) {
             .navbar ul {
-                gap: 25px; /* Adjusted gap for more links */
+                gap: 25px;
+                /* Adjusted gap for more links */
             }
+
             .navbar a {
-                padding: 10px 18px; /* Adjusted padding for more links */
+                padding: 10px 18px;
+                /* Adjusted padding for more links */
                 font-size: 0.95em;
             }
 
@@ -790,111 +1144,135 @@ body {
             .grid-container {
                 grid-template-columns: 1fr 1fr;
             }
+
             /* On larger screens, arrange form buttons horizontally */
             .form-buttons {
                 flex-direction: row;
-                gap: 15px; /* Adjust gap as needed */
+                gap: 15px;
+                /* Adjust gap as needed */
             }
         }
 
         @media (max-width: 480px) {
-    .navbar {
-        flex-direction: column;
-        padding: 8px 15px;
-        min-height: auto;
-        width: 100%;
-        gap: 10px;
-        box-sizing: border-box;
-    }
-    .navbar-logo {
-        margin-bottom: 0;
-    }
-    .navbar-logo img {
-        height: 40px;
-        max-width: 120px;
-    }
-    .navbar ul {
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 10px;
-        width: 100%;
-        margin: 0;
-        padding: 0;
-    }
-    .navbar a {
-        padding: 6px 10px;
-        font-size: 0.85em;
-        white-space: nowrap;
-    }
-    #home {
-        padding-top: 120px;
-    }
-    #home h1 {
-        font-size: 2.8em;
-    }
-    #home p {
-        font-size: 1em;
-        padding: 0 15px;
-    }
-    .button {
-        padding: 10px 20px;
-        font-size: 0.9em;
-    }
-    .section {
-        padding: 60px 15px;
-        text-align: center;
-        box-sizing: border-box;
-    }
-    .section .container {
-        padding: 0;
-        max-width: 100%;
-        box-sizing: border-box;
-    }
-    .section h2 {
-        font-size: 2.2em;
-        text-align: center;
-    }
-    .section p {
-        font-size: 0.9em;
-        text-align: center;
-        margin: 0 auto;
-    }
-    .form-card {
-        padding: 25px 15px;
-        margin: 0 15px;
-        max-width: calc(100% - 30px);
-        box-sizing: border-box;
-    }
-    .form-group input,
-    .form-group textarea {
-        padding: 10px;
-        box-sizing: border-box;
-    }
-    .flex-center {
-        padding: 20px 15px;
-        box-sizing: border-box;
-    }
-    .form-buttons .button {
-        margin-bottom: 0;
-    }
-    .grid-container {
-        padding: 0 15px;
-        box-sizing: border-box;
-    }
-    .grid-item {
-        margin: 0 0 20px 0;
-        box-sizing: border-box;
-    }
-}
+            .navbar {
+                flex-direction: column;
+                padding: 12px 15px;
+                min-height: auto;
+                width: 100%;
+                gap: 10px;
+                box-sizing: border-box;
+                height: auto;
+            }
+
+            .navbar-logo {
+                margin-bottom: 0;
+            }
+
+            .navbar-logo img {
+                height: 40px;
+                max-width: 120px;
+            }
+
+            .navbar ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px;
+                width: 100%;
+                margin: 0;
+                padding: 0;
+            }
+
+            .navbar a {
+                padding: 6px 10px;
+                font-size: 0.85em;
+                white-space: nowrap;
+            }
+
+            #home {
+                padding-top: 140px;
+            }
+
+            #home h1 {
+                font-size: 2.8em;
+            }
+
+            #home p {
+                font-size: 1em;
+                padding: 0 15px;
+            }
+
+            .button {
+                padding: 10px 20px;
+                font-size: 0.9em;
+            }
+
+            .section {
+                padding: 60px 15px;
+                text-align: center;
+                box-sizing: border-box;
+            }
+
+            .section .container {
+                padding: 0;
+                max-width: 100%;
+                box-sizing: border-box;
+            }
+
+            .section h2 {
+                font-size: 2.2em;
+                text-align: center;
+            }
+
+            .section p {
+                font-size: 0.9em;
+                text-align: center;
+                margin: 0 auto;
+            }
+
+            .form-card {
+                padding: 25px 15px;
+                margin: 0 15px;
+                max-width: calc(100% - 30px);
+                box-sizing: border-box;
+            }
+
+            .form-group input,
+            .form-group textarea {
+                padding: 10px;
+                box-sizing: border-box;
+            }
+
+            .flex-center {
+                padding: 20px 15px;
+                box-sizing: border-box;
+            }
+
+            .form-buttons .button {
+                margin-bottom: 0;
+            }
+
+            .grid-container {
+                padding: 0 15px;
+                box-sizing: border-box;
+            }
+
+            .grid-item {
+                margin: 0 0 20px 0;
+                box-sizing: border-box;
+            }
+        }
     </style>
 </head>
+
 <body>
 
     <!-- Navigation Bar -->
     <nav class="navbar">
-       <a href="#home" class="navbar-logo">
-    <img width="100" src="./images/generations-logo.png" style="background: none; border: none; box-shadow: none; display: block;" alt="Generations Logo">
-</a>
+        <a href="#home" class="navbar-logo">
+            <img width="40" src="./images/umalla-logo-without-text.png"
+                style="background: none; border: none; box-shadow: none; display: block;" alt="Generations Logo">
+            <span class="logo-text">Generations</span>
+        </a>
         <ul>
             <li><a href="#home" class="active" onclick="setActiveLink(this)">Home</a></li>
             <li><a href="#about" onclick="setActiveLink(this)">About Us</a></li>
@@ -905,84 +1283,93 @@ body {
     </nav>
 
     <!-- Home Section (Hero) -->
-<section id="home" class="flex-center animated-section">
-    <div class="hero-icons">
-        <i class="fas fa-users hero-icon"></i>
-        <i class="fas fa-heart hero-icon"></i>
-        <i class="fas fa-globe hero-icon"></i>
-        <i class="fas fa-tree hero-icon"></i>
-    </div>
-    <i class="fas fa-users section-icon"></i>
-    <h1>Generations</h1>
-    <p>Connecting the world, one family at a time. Discover your roots, expand your family tree, and build a global network of connections.</p>
-    <a href="#sign-in" class="button">Join Generations Today!</a>
+    <section id="home" class="flex-center animated-section">
+        <h1>Generations</h1>
+        <p>Connecting the world, one family at a time. Discover your roots, expand your family tree, and build a global
+            network of connections.</p>
+        <a href="#sign-in" class="button">Join Generations Today!</a>
 
-    <!-- About Section -->
-</section>
+        <!-- About Section -->
+    </section>
     <section id="about" class="section flex-center animated-section">
         <div class="content-decoration">
-    <i class="fas fa-users floating-icon"></i>
-    <i class="fas fa-heart floating-icon"></i>
-    <i class="fas fa-search floating-icon"></i>
-    <i class="fas fa-globe-americas floating-icon"></i>
-    <i class="fas fa-tree floating-icon"></i>
-</div>
-    <div class="container">
-        <h2 class="animated-heading">About Generations</h2>
-        <p>Generations is a revolutionary web application designed to bridge the gaps between families across the globe. Our unique algorithm cross-references individual nuclear families, helping you discover relatives you never knew you had. We believe in the power of connection and the richness of shared heritage.</p>
+            <i class="fas fa-users floating-icon"></i>
+            <i class="fas fa-heart floating-icon"></i>
+            <i class="fas fa-search floating-icon"></i>
+            <i class="fas fa-globe-americas floating-icon"></i>
+            <i class="fas fa-tree floating-icon"></i>
+        </div>
+        <div class="container">
+            <h2 class="animated-heading">About Generations</h2>
+            <p>Generations is a revolutionary web application designed to bridge the gaps between families across the
+                globe. Our unique algorithm cross-references individual nuclear families, helping you discover relatives
+                you never knew you had. We believe in the power of connection and the richness of shared heritage.</p>
 
-        <div class="grid-container">
-            <div class="grid-item">
-                <i class="fas fa-bullseye grid-item-icon"></i>
-                <h3>Our Mission</h3>
-                <p>To empower individuals to connect with their extended families, foster a deeper understanding of their lineage, and build a more interconnected global community. We strive to make family history accessible and exciting for everyone.</p>
-            </div>
-            <div class="grid-item">
-                <i class="fas fa-cogs grid-item-icon"></i>
-                <h3>How It Works</h3>
-                <p>Users input their nuclear family data, and our advanced algorithm analyzes commonalities and potential links across our vast database. We then present you with potential family connections, allowing you to explore and verify new relationships securely.</p>
+            <div class="grid-container">
+                <div class="grid-item">
+                    <i class="fas fa-bullseye grid-item-icon"></i>
+                    <h3>Our Mission</h3>
+                    <p>To empower individuals to connect with their extended families, foster a deeper understanding of
+                        their lineage, and build a more interconnected global community. We strive to make family
+                        history accessible and exciting for everyone.</p>
+                </div>
+                <div class="grid-item">
+                    <i class="fas fa-cogs grid-item-icon"></i>
+                    <h3>How It Works</h3>
+                    <p>Users input their nuclear family data, and our advanced algorithm analyzes commonalities and
+                        potential links across our vast database. We then present you with potential family connections,
+                        allowing you to explore and verify new relationships securely.</p>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
     <!-- Sign-in Section -->
     <section id="sign-in" class="section flex-center animated-section">
         <div class="content-decoration">
-    <i class="fas fa-key floating-icon"></i>
-    <i class="fas fa-shield-alt floating-icon"></i>
-    <i class="fas fa-user-plus floating-icon"></i>
-    <i class="fas fa-lock floating-icon"></i>
-    <i class="fas fa-check-circle floating-icon"></i>
-</div>
+            <i class="fas fa-key floating-icon"></i>
+            <i class="fas fa-shield-alt floating-icon"></i>
+            <i class="fas fa-user-plus floating-icon"></i>
+            <i class="fas fa-lock floating-icon"></i>
+            <i class="fas fa-check-circle floating-icon"></i>
+        </div>
         <div class="container">
             <h2 class="animated-heading">Join the Generations Family</h2>
             <div class="form-card">
                 <form>
                     <p style="text-align: center; margin-bottom: 25px; color: var(--main-text-dark);">
                         Sign in with your email or securely with Google.
-                   <div class="form-group">
-    <label for="email">Email Address</label>
-    <input type="email" id="email" placeholder="you@example.com">
-</div>
-<div class="form-group">
-    <label for="password">Password</label>
-    <input type="password" id="password" placeholder="********">
-</div>
-                    <p style="text-align: center; margin: 20px 0; color: var(--secondary-text-highlight); font-weight: 500;">
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" placeholder="you@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" placeholder="********">
+                    </div>
+                    <p
+                        style="text-align: center; margin: 20px 0; color: var(--secondary-text-highlight); font-weight: 500;">
                         Or
                     </p>
                     <div class="form-buttons">
                         <!-- Sign in with Google Button -->
                         <button type="button" class="button google-signin">
-    <svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
-        <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
-        <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
-        <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
-    </svg>
-    Sign in with Google
-</button>
+                            <svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"
+                                    fill="#4285F4" />
+                                <path
+                                    d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"
+                                    fill="#34A853" />
+                                <path
+                                    d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"
+                                    fill="#FBBC05" />
+                                <path
+                                    d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"
+                                    fill="#EA4335" />
+                            </svg>
+                            Sign in with Google
+                        </button>
                     </div>
                 </form>
             </div>
@@ -992,79 +1379,89 @@ body {
     <!-- Careers Section -->
     <section id="careers" class="section flex-center animated-section">
         <div class="content-decoration">
-    <i class="fas fa-briefcase floating-icon"></i>
-    <i class="fas fa-lightbulb floating-icon"></i>
-    <i class="fas fa-rocket floating-icon"></i>
-    <i class="fas fa-handshake floating-icon"></i>
-    <i class="fas fa-star floating-icon"></i>
-</div>
+            <i class="fas fa-briefcase floating-icon"></i>
+            <i class="fas fa-lightbulb floating-icon"></i>
+            <i class="fas fa-rocket floating-icon"></i>
+            <i class="fas fa-handshake floating-icon"></i>
+            <i class="fas fa-star floating-icon"></i>
+        </div>
 
         <div class="container">
-            <h2 class="animated-heading"><i class="fas fa-briefcase section-icon" style="display: block;"></i>Join Our Family</h2>
-            <p>Passionate about connecting the world? Generations is a dynamic and innovative startup dedicated to transforming how people discover their family heritage. We're always looking for talented individuals to join our growing team.</p>
+            <h2 class="animated-heading"><i class="fas fa-briefcase section-icon" style="display: block;"></i>Join Our
+                Family</h2>
+            <p>Passionate about connecting the world? Generations is a dynamic and innovative startup dedicated to
+                transforming how people discover their family heritage. We're always looking for talented individuals to
+                join our growing team.</p>
 
             <div class="grid-container" style="max-width: 800px;">
                 <div class="job-listing">
-    <i class="fas fa-code job-icon"></i>
-    <h3>Software Engineer (Backend)</h3>
-    <p>Develop and maintain our core family-matching algorithm and scalable backend infrastructure. Proficiency in Python/Node.js and database management required.</p>
-    <a href="#" class="apply-button">Apply Now</a>
-</div>
-<div class="job-listing">
-    <i class="fas fa-paint-brush job-icon"></i>
-    <h3>Product Designer (UI/UX)</h3>
-    <p>Craft intuitive and beautiful user interfaces, ensuring a seamless and engaging experience for our global user base. Experience with Figma/Sketch and user research a plus.</p>
-    <a href="#" class="apply-button">Apply Now</a>
-</div>
-<div class="job-listing">
-    <i class="fas fa-users job-icon"></i>
-    <h3>Community Engagement Specialist</h3>
-    <p>Foster a vibrant and supportive community among Generations users. Manage social media, moderate forums, and organize virtual events.</p>
-    <a href="#" class="apply-button">Apply Now</a>
-</div>
+                    <i class="fas fa-code job-icon"></i>
+                    <h3>Software Engineer (Backend)</h3>
+                    <p>Develop and maintain our core family-matching algorithm and scalable backend infrastructure.
+                        Proficiency in Python/Node.js and database management required.</p>
+                    <a href="#" class="apply-button">Apply Now</a>
+                </div>
+                <div class="job-listing">
+                    <i class="fas fa-paint-brush job-icon"></i>
+                    <h3>Product Designer (UI/UX)</h3>
+                    <p>Craft intuitive and beautiful user interfaces, ensuring a seamless and engaging experience for
+                        our global user base. Experience with Figma/Sketch and user research a plus.</p>
+                    <a href="#" class="apply-button">Apply Now</a>
+                </div>
+                <div class="job-listing">
+                    <i class="fas fa-users job-icon"></i>
+                    <h3>Community Engagement Specialist</h3>
+                    <p>Foster a vibrant and supportive community among Generations users. Manage social media, moderate
+                        forums, and organize virtual events.</p>
+                    <a href="#" class="apply-button">Apply Now</a>
+                </div>
             </div>
-            <p style="margin-top: 40px;">Don't see a role that fits? Send us your resume at <a href="mailto:careers@generations.com" style="color: var(--primary-color); text-decoration: underline;">careers@generations.com</a></p>
+            <p style="margin-top: 40px;">Don't see a role that fits? Send us your resume at <a
+                    href="mailto:careers@generations.com"
+                    style="color: var(--primary-color); text-decoration: underline;">careers@generations.com</a></p>
         </div>
     </section>
 
     <!-- Contact Us Section -->
     <section id="contact-us" class="section flex-center animated-section">
         <div class="content-decoration">
-    <i class="fas fa-envelope floating-icon"></i>
-    <i class="fas fa-phone floating-icon"></i>
-    <i class="fas fa-comments floating-icon"></i>
-    <i class="fas fa-paper-plane floating-icon"></i>
-    <i class="fas fa-headset floating-icon"></i>
-</div>
+            <i class="fas fa-envelope floating-icon"></i>
+            <i class="fas fa-phone floating-icon"></i>
+            <i class="fas fa-comments floating-icon"></i>
+            <i class="fas fa-paper-plane floating-icon"></i>
+            <i class="fas fa-headset floating-icon"></i>
+        </div>
         <div class="container">
             <h2 class="animated-heading">Get in Touch</h2>
-            <p>Have questions, feedback, or need support? We're here to help! Please fill out the form below or reach out to us directly.</p>
+            <p>Have questions, feedback, or need support? We're here to help! Please fill out the form below or reach
+                out to us directly.</p>
 
             <div class="form-card">
                 <form>
                     <div class="form-group">
-    <label for="contact-name">Your Name</label>
-    <input type="text" id="contact-name" placeholder="John Doe" required>
-</div>
-<div class="form-group">
-    <label for="contact-email">Your Email Address</label>
-    <input type="email" id="contact-email" placeholder="you@example.com" required>
-</div>
-<div class="form-group">
-    <label for="contact-subject">Subject</label>
-    <input type="text" id="contact-subject" placeholder="Inquiry about..." required>
-</div>
-<div class="form-group">
-    <label for="contact-message">Your Message</label>
-    <textarea id="contact-message" placeholder="Type your message here..." required></textarea>
-</div>
+                        <label for="contact-name">Your Name</label>
+                        <input type="text" id="contact-name" placeholder="John Doe" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-email">Your Email Address</label>
+                        <input type="email" id="contact-email" placeholder="you@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-subject">Subject</label>
+                        <input type="text" id="contact-subject" placeholder="Inquiry about..." required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-message">Your Message</label>
+                        <textarea id="contact-message" placeholder="Type your message here..." required></textarea>
+                    </div>
                     <div class="form-buttons" style="flex-direction: row;">
                         <button type="submit" class="button">Send Message</button>
                     </div>
                 </form>
             </div>
             <p style="margin-top: 30px; font-size: 0.9em; color: var(--main-text-dark);">
-                You can also reach us directly at <a href="mailto:support@generations.com" style="color: var(--primary-color); text-decoration: underline;">support@generations.com</a>
+                You can also reach us directly at <a href="mailto:support@generations.com"
+                    style="color: var(--primary-color); text-decoration: underline;">support@generations.com</a>
             </p>
         </div>
     </section>
@@ -1199,34 +1596,77 @@ body {
                 if (window.scrollY < allSections[0].offsetTop + scrollThreshold && current === 'home') {
                     document.querySelector('.navbar a[href="#home"]').classList.add('active');
                 } else if (window.scrollY === 0) { // If exactly at the very top
-                     navLinks.forEach(link => link.classList.remove('active'));
-                     document.querySelector('.navbar a[href="#home"]').classList.add('active');
+                    navLinks.forEach(link => link.classList.remove('active'));
+                    document.querySelector('.navbar a[href="#home"]').classList.add('active');
                 }
             });
         });
     </script>
-<!-- Side decorative elements -->
-<div class="side-decoration left">
-    <svg viewBox="0 0 200 200">
-        <circle cx="100" cy="50" r="30" opacity="0.3"/>
-        <circle cx="70" cy="100" r="25" opacity="0.2"/>
-        <circle cx="130" cy="100" r="25" opacity="0.2"/>
-        <circle cx="50" cy="150" r="20" opacity="0.1"/>
-        <circle cx="100" cy="150" r="20" opacity="0.1"/>
-        <circle cx="150" cy="150" r="20" opacity="0.1"/>
-        <path d="M100 80 L70 125 M100 80 L130 125 M70 125 L50 170 M70 125 L100 170 M130 125 L100 170 M130 125 L150 170" stroke="currentColor" stroke-width="2" opacity="0.2"/>
-    </svg>
-</div>
-<div class="side-decoration right">
-    <svg viewBox="0 0 200 200">
-        <circle cx="100" cy="50" r="30" opacity="0.3"/>
-        <circle cx="70" cy="100" r="25" opacity="0.2"/>
-        <circle cx="130" cy="100" r="25" opacity="0.2"/>
-        <circle cx="50" cy="150" r="20" opacity="0.1"/>
-        <circle cx="100" cy="150" r="20" opacity="0.1"/>
-        <circle cx="150" cy="150" r="20" opacity="0.1"/>
-        <path d="M100 80 L70 125 M100 80 L130 125 M70 125 L50 170 M70 125 L100 170 M130 125 L100 170 M130 125 L150 170" stroke="currentColor" stroke-width="2" opacity="0.2"/>
-    </svg>
-</div>
+    <!-- Side decorative elements -->
+    <div class="side-decoration left">
+        <svg viewBox="0 0 200 200">
+            <circle cx="100" cy="50" r="30" opacity="0.3" />
+            <circle cx="70" cy="100" r="25" opacity="0.2" />
+            <circle cx="130" cy="100" r="25" opacity="0.2" />
+            <circle cx="50" cy="150" r="20" opacity="0.1" />
+            <circle cx="100" cy="150" r="20" opacity="0.1" />
+            <circle cx="150" cy="150" r="20" opacity="0.1" />
+            <path
+                d="M100 80 L70 125 M100 80 L130 125 M70 125 L50 170 M70 125 L100 170 M130 125 L100 170 M130 125 L150 170"
+                stroke="currentColor" stroke-width="2" opacity="0.2" />
+        </svg>
+    </div>
+    <div class="side-decoration right">
+        <svg viewBox="0 0 200 200">
+            <circle cx="100" cy="50" r="30" opacity="0.3" />
+            <circle cx="70" cy="100" r="25" opacity="0.2" />
+            <circle cx="130" cy="100" r="25" opacity="0.2" />
+            <circle cx="50" cy="150" r="20" opacity="0.1" />
+            <circle cx="100" cy="150" r="20" opacity="0.1" />
+            <circle cx="150" cy="150" r="20" opacity="0.1" />
+            <path
+                d="M100 80 L70 125 M100 80 L130 125 M70 125 L50 170 M70 125 L100 170 M130 125 L100 170 M130 125 L150 170"
+                stroke="currentColor" stroke-width="2" opacity="0.2" />
+        </svg>
+    </div>
+    <!-- Sticky Invite Footer -->
+    <div class="sticky-invite-footer">
+        <p class="invite-text">Received an invite? Enter code here: </p>
+        <div class="invite-input-group">
+            <input type="text" class="invite-code-input" placeholder="Enter invite code" />
+            <button class="invite-cta-button">Get Started</button>
+        </div>
+        <button class="close-invite-footer" onclick="hideInviteFooter()">×</button>
+    </div>
+
+    <script>
+        // Add this JavaScript function to handle hiding the footer
+        function hideInviteFooter() {
+            const footer = document.querySelector('.sticky-invite-footer');
+            if (footer) {
+                footer.classList.add('hidden');
+            }
+        }
+
+        // Optional: Add functionality to the "Get Started" button
+        document.addEventListener('DOMContentLoaded', function () {
+            const getStartedBtn = document.querySelector('.invite-cta-button');
+            const inviteInput = document.querySelector('.invite-code-input');
+
+            if (getStartedBtn) {
+                getStartedBtn.addEventListener('click', function () {
+                    const inviteCode = inviteInput.value.trim();
+                    if (inviteCode) {
+                        // Handle the invite code logic here
+                        alert(`Invite code entered: ${inviteCode}`);
+                        // You can replace this with actual functionality
+                    } else {
+                        alert('Please enter an invite code');
+                    }
+                });
+            }
+        });
+    </script>
 </body>
+
 </html>
