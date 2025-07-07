@@ -104,7 +104,7 @@
 
         /* Section background images */
         #home {
-            background-color: var(--background-ivory);
+            background-color: #FFFFFF;
             position: relative;
             padding-top: 80px;
         }
@@ -531,6 +531,82 @@
             width: calc(100% - 20px);
         }
 
+        /* Hamburger Menu Styles */
+        .hamburger-menu {
+            display: none;
+            flex-direction: column;
+            justify-content: space-around;
+            width: 30px;
+            height: 30px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 1001;
+        }
+
+        .hamburger-menu span {
+            width: 25px;
+            height: 3px;
+            background: var(--primary-color);
+            border-radius: 3px;
+            transition: 0.3s;
+            transform-origin: 1px;
+        }
+
+        .hamburger-menu.active span:first-child {
+            transform: rotate(45deg);
+        }
+
+        .hamburger-menu.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger-menu.active span:nth-child(3) {
+            transform: rotate(-45deg);
+        }
+
+        /* Mobile Navigation */
+        @media (max-width: 768px) {
+            .hamburger-menu {
+                display: flex;
+            }
+
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 80px;
+                flex-direction: column;
+                background-color: #FFFFED;
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+                z-index: 1000;
+                padding: 20px 0;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-menu li {
+                margin: 10px 0;
+            }
+
+            .navbar ul {
+                flex-direction: column;
+                gap: 0;
+            }
+
+            .navbar a {
+                padding: 15px 20px;
+                font-size: 1em;
+                display: block;
+                width: 100%;
+            }
+        }
+
         /* Additional background images for visual appeal */
         #sign-in {
             background-image:
@@ -820,20 +896,28 @@
         }
 
         .form-group input[type="email"],
-        .form-group input[type="password"],
-        .form-group textarea {
-            /* Added textarea for contact form */
-            width: calc(100% - 28px);
+        .form-group input[type="password"] {
+            width: calc(100% - 28px); /* Keep padding for these with icons */
             padding: 14px;
             border: 1px solid var(--secondary-text-highlight);
-            /* Dusty Blue border */
             border-radius: 6px;
             background-color: #FFF;
-            /* Pure white input background */
             color: var(--main-text-dark);
             transition: all 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
-            /* Smooth transition for focus */
             box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .form-group textarea {
+            width: 100%; /* Make it full width relative to its container */
+            padding: 14px; /* Maintain the desired padding */
+            border: 1px solid var(--secondary-text-highlight);
+            border-radius: 6px;
+            background-color: #FFF;
+            color: var(--main-text-dark);
+            transition: all 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
+            min-height: 120px;
+            resize: vertical;
         }
 
         .form-group input[type="email"]::placeholder,
@@ -1155,17 +1239,9 @@
 
         @media (max-width: 480px) {
             .navbar {
-                flex-direction: column;
                 padding: 12px 15px;
-                min-height: auto;
-                width: 100%;
-                gap: 10px;
+                height: 80px;
                 box-sizing: border-box;
-                height: auto;
-            }
-
-            .navbar-logo {
-                margin-bottom: 0;
             }
 
             .navbar-logo img {
@@ -1173,19 +1249,8 @@
                 max-width: 120px;
             }
 
-            .navbar ul {
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 10px;
-                width: 100%;
-                margin: 0;
-                padding: 0;
-            }
-
-            .navbar a {
-                padding: 6px 10px;
-                font-size: 0.85em;
-                white-space: nowrap;
+            .nav-menu {
+                top: 80px;
             }
 
             #home {
@@ -1273,12 +1338,19 @@
                 style="background: none; border: none; box-shadow: none; display: block;" alt="Generations Logo">
             <span class="logo-text">Generations</span>
         </a>
-        <ul>
-            <li><a href="#home" class="active" onclick="setActiveLink(this)">Home</a></li>
-            <li><a href="#about" onclick="setActiveLink(this)">About Us</a></li>
-            <li><a href="#sign-in" onclick="setActiveLink(this)">Sign-In</a></li>
-            <li><a href="#careers" onclick="setActiveLink(this)">Careers</a></li>
-            <li><a href="#contact-us" onclick="setActiveLink(this)">Contact Us</a></li>
+
+        <button class="hamburger-menu" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <ul class="nav-menu">
+            <li><a href="#home" class="active" onclick="setActiveLink(this); closeMenu()">Home</a></li>
+            <li><a href="#about" onclick="setActiveLink(this); closeMenu()">About Us</a></li>
+            <li><a href="#sign-in" onclick="setActiveLink(this); closeMenu()">Sign-In</a></li>
+            <li><a href="#careers" onclick="setActiveLink(this); closeMenu()">Careers</a></li>
+            <li><a href="#contact-us" onclick="setActiveLink(this); closeMenu()">Contact Us</a></li>
         </ul>
     </nav>
 
@@ -1667,6 +1739,36 @@
             }
         });
     </script>
+
+    <script>
+        function toggleMenu() {
+            const navMenu = document.querySelector('.nav-menu');
+            const hamburger = document.querySelector('.hamburger-menu');
+
+            navMenu.classList.toggle('active');
+            hamburger.classList.toggle('active');
+        }
+
+        function closeMenu() {
+            const navMenu = document.querySelector('.nav-menu');
+            const hamburger = document.querySelector('.hamburger-menu');
+
+            navMenu.classList.remove('active');
+            hamburger.classList.remove('active');
+        }
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function (event) {
+            const navMenu = document.querySelector('.nav-menu');
+            const hamburger = document.querySelector('.hamburger-menu');
+            const navbar = document.querySelector('.navbar');
+
+            if (!navbar.contains(event.target) && navMenu.classList.contains('active')) {
+                closeMenu();
+            }
+        });
+    </script>
+
 </body>
 
 </html>
