@@ -14,6 +14,16 @@
         /* Google Font Import - 'Inter' for a modern, clean look */
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap');
 
+        /* Custom Font Import - Selamyts */
+        @font-face {
+            font-family: 'Selamyts'; /* This is the name you'll use in your CSS */
+            src: url('./fonts/Selamyts.woff2') format('woff2'),
+                 url('./fonts/Selamyts.woff') format('woff');
+            font-weight: normal; /* Adjust if your font has specific weights (e.g., 400 for regular) */
+            font-style: normal;
+            font-display: swap; /* Helps with font loading performance */
+        }
+
         *,
         *::before,
         *::after {
@@ -104,6 +114,7 @@
 
         /* Section background images */
         #home {
+            background-color: var(--background-ivory);
             background-color: #FFFFFF;
             position: relative;
             padding-top: 80px;
@@ -426,12 +437,14 @@
         }
 
         .navbar-logo .logo-text {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Selamyts', serif;
             font-size: 1.6em;
-            font-weight: 700;
+            font-weight: 900;
             color: #8B7355;
             letter-spacing: -0.5px;
             margin: 0;
+            margin-top: 2px
+            scale: 125%
         }
 
         .navbar-logo:hover {
@@ -896,20 +909,27 @@
         }
 
         .form-group input[type="email"],
-        .form-group input[type="password"] {
-            width: calc(100% - 28px); /* Keep padding for these with icons */
+        .form-group input[type="password"],
+        .form-group textarea {
+            /* Added textarea for contact form */
+            width: calc(100% - 28px);
             padding: 14px;
             border: 1px solid var(--secondary-text-highlight);
+            /* Dusty Blue border */
             border-radius: 6px;
             background-color: #FFF;
+            /* Pure white input background */
             color: var(--main-text-dark);
             transition: all 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            /* Smooth transition for focus */
             box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.05);
         }
 
         .form-group textarea {
-            width: 100%; /* Make it full width relative to its container */
-            padding: 14px; /* Maintain the desired padding */
+            width: 100%;
+            /* Make it full width relative to its container */
+            padding: 14px;
+            /* Maintain the desired padding */
             border: 1px solid var(--secondary-text-highlight);
             border-radius: 6px;
             background-color: #FFF;
@@ -1239,14 +1259,38 @@
 
         @media (max-width: 480px) {
             .navbar {
+                flex-direction: column;
                 padding: 12px 15px;
+                min-height: auto;
+                width: 100%;
+                gap: 10px;
                 height: 80px;
                 box-sizing: border-box;
+                height: auto;
+            }
+
+            .navbar-logo {
+                margin-bottom: 0;
             }
 
             .navbar-logo img {
                 height: 40px;
                 max-width: 120px;
+            }
+
+            .navbar ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px;
+                width: 100%;
+                margin: 0;
+                padding: 0;
+            }
+
+            .navbar a {
+                padding: 6px 10px;
+                font-size: 0.85em;
+                white-space: nowrap;
             }
 
             .nav-menu {
@@ -1338,20 +1382,18 @@
                 style="background: none; border: none; box-shadow: none; display: block;" alt="Generations Logo">
             <span class="logo-text">Generations</span>
         </a>
+        <ul>
+            <li><a href="#home" class="active" onclick="setActiveLink(this)">Home</a></li>
+            <li><a href="#about" onclick="setActiveLink(this)">About Us</a></li>
+            <li><a href="#sign-in" onclick="setActiveLink(this)">Sign-In</a></li>
+            <li><a href="#careers" onclick="setActiveLink(this)">Careers</a></li>
+            <li><a href="#contact-us" onclick="setActiveLink(this)">Contact Us</a></li>
 
-        <button class="hamburger-menu" onclick="toggleMenu()">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-
-        <ul class="nav-menu">
-            <li><a href="#home" class="active" onclick="setActiveLink(this); closeMenu()">Home</a></li>
-            <li><a href="#about" onclick="setActiveLink(this); closeMenu()">About Us</a></li>
-            <li><a href="#sign-in" onclick="setActiveLink(this); closeMenu()">Sign-In</a></li>
-            <li><a href="#careers" onclick="setActiveLink(this); closeMenu()">Careers</a></li>
-            <li><a href="#contact-us" onclick="setActiveLink(this); closeMenu()">Contact Us</a></li>
-        </ul>
+            <button class="hamburger-menu" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
     </nav>
 
     <!-- Home Section (Hero) -->
