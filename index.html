@@ -226,7 +226,13 @@
         .form-group input[type="email"],
         .form-group input[type="password"],
         .form-group input[type="text"] {
-            padding-left: 45px;
+            padding-left: 8px;
+            border-radius: 6px;
+            width: calc(100% - 28px);
+            font-family: 'Century Gothic', serif;
+            border-color: var(--secondary-text-highlight);
+            border: 1px solid var(--secondary-text-highlight);
+            height: 40px;
         }
 
         /* Career card icons */
@@ -1005,9 +1011,11 @@
             /* Added textarea for contact form */
             width: calc(100% - 28px);
             padding: 14px;
+            font-family: 'Century Gothic', serif;
             border: 1px solid var(--secondary-text-highlight);
             /* Dusty Blue border */
             border-radius: 6px;
+            border-style: round;
             background-color: #FFF;
             /* Pure white input background */
             color: var(--main-text-dark);
@@ -1017,7 +1025,7 @@
         }
 
         .form-group textarea {
-            width: 100%;
+            width: calc(100%-28px);
             /* Make it full width relative to its container */
             padding: 14px;
             /* Maintain the desired padding */
@@ -1447,7 +1455,10 @@
             .form-group input,
             .form-group textarea {
                 padding: 10px;
+                font-family: 'Century Gothic', serif;
                 box-sizing: border-box;
+                border-color: var(--secondary-text-highlight);
+                border: 1px solid var(--secondary-text-highlight);
             }
 
             .flex-center {
