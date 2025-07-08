@@ -16,12 +16,15 @@
 
         /* Custom Font Import - Selamyts */
         @font-face {
-            font-family: 'Selamyts'; /* This is the name you'll use in your CSS */
+            font-family: 'Selamyts';
+            /* This is the name you'll use in your CSS */
             src: url('./fonts/Selamyts.woff2') format('woff2'),
-                 url('./fonts/Selamyts.woff') format('woff');
-            font-weight: normal; /* Adjust if your font has specific weights (e.g., 400 for regular) */
+                url('./fonts/Selamyts.woff') format('woff');
+            font-weight: normal;
+            /* Adjust if your font has specific weights (e.g., 400 for regular) */
             font-style: normal;
-            font-display: swap; /* Helps with font loading performance */
+            font-display: swap;
+            /* Helps with font loading performance */
         }
 
         *,
@@ -408,11 +411,14 @@
             box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
             display: flex;
             justify-content: space-between;
+            /* Ensures logo and hamburger are spaced */
             align-items: center;
             transition: transform 0.3s ease-out, background-color 0.3s ease, box-shadow 0.3s ease;
-            height: 80px;
-            overflow: hidden;
+            /* height: 80px; REMOVED to allow content to dictate height, especially in mobile menu */
+            /* overflow: hidden; REMOVED to allow mobile menu to expand */
             box-sizing: border-box;
+            min-height: 80px;
+            /* Ensure minimum height */
         }
 
 
@@ -426,7 +432,6 @@
         .navbar-logo {
             display: flex;
             align-items: center;
-            gap: 8px;
             text-decoration: none;
             padding: 0;
             margin-right: 20px;
@@ -443,7 +448,6 @@
             color: #8B7355;
             letter-spacing: -0.5px;
             margin: 0;
-            margin-top: 2px
             scale: 125%
         }
 
@@ -467,17 +471,17 @@
             background: none !important;
             border: none !important;
             box-shadow: none !important;
+            margin-right: 8px;
         }
 
         .navbar ul {
+            /* This rule now targets the ul inside .nav-menu by default on desktop */
             list-style: none;
             margin: 0;
             padding: 0;
             display: flex;
             justify-content: center;
-            /* Centered relative to its container */
             gap: 20px;
-            /* Reduced gap to accommodate more links */
         }
 
         .navbar a {
@@ -579,44 +583,93 @@
             transform: rotate(-45deg);
         }
 
-        /* Mobile Navigation */
+        /* Media query for Mobile specific styles */
         @media (max-width: 768px) {
+
+            /* Ensure the logo is still visible when the menu is open */
+            .navbar-logo {
+                z-index: 1002;
+                /* Higher than nav-menu */
+            }
+
             .hamburger-menu {
                 display: flex;
+                /* Always show hamburger on mobile */
+                margin-left: auto;
+                /* Push to the right */
+                position: relative;
+                /* For z-index to work */
+                z-index: 1002;
+                /* Ensure it's above the menu */
             }
 
             .nav-menu {
+                /* This now targets the <div> wrapper */
                 position: fixed;
                 left: -100%;
+                /* Hidden by default */
                 top: 80px;
+                /* Position below the navbar header */
+                height: calc(100vh - 80px);
+                /* Take full height minus navbar height */
                 flex-direction: column;
                 background-color: #FFFFED;
                 width: 100%;
                 text-align: center;
-                transition: 0.3s;
+                transition: 0.3s ease-in-out;
+                /* Smoother transition */
                 box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
-                z-index: 1000;
+                z-index: 1001;
+                /* Below hamburger, above other content */
                 padding: 20px 0;
+                overflow-y: auto;
+                /* Enable scrolling for long menus */
+                display: flex;
+                /* Use flexbox for vertical alignment of list items */
+                align-items: center;
+                /* Center horizontally */
+                justify-content: flex-start;
+                /* Start items from the top */
             }
 
             .nav-menu.active {
                 left: 0;
+                /* Slide in when active */
+            }
+
+            .nav-menu ul {
+                /* Now target the ul INSIDE the nav-menu */
+                flex-direction: column;
+                width: 100%;
+                /* Make ul take full width */
+                gap: 0;
+                /* Remove gap between li elements */
             }
 
             .nav-menu li {
+                /* Target li inside nav-menu */
                 margin: 10px 0;
+                width: 100%;
+                /* Full width list items */
             }
 
-            .navbar ul {
-                flex-direction: column;
-                gap: 0;
-            }
-
-            .navbar a {
+            .nav-menu a {
+                /* Target links inside nav-menu */
                 padding: 15px 20px;
                 font-size: 1em;
                 display: block;
                 width: 100%;
+            }
+
+            /* Hide the default navbar ul on mobile screens (as it's now inside .nav-menu) */
+            .navbar ul:not(.nav-menu ul) {
+                display: none;
+            }
+
+            /* Adjust navbar height for mobile to prevent content overlap with fixed menu */
+            .navbar {
+                height: auto;
+                /* Allow navbar height to adjust */
             }
         }
 
@@ -1382,18 +1435,22 @@
                 style="background: none; border: none; box-shadow: none; display: block;" alt="Generations Logo">
             <span class="logo-text">Generations</span>
         </a>
-        <ul>
-            <li><a href="#home" class="active" onclick="setActiveLink(this)">Home</a></li>
-            <li><a href="#about" onclick="setActiveLink(this)">About Us</a></li>
-            <li><a href="#sign-in" onclick="setActiveLink(this)">Sign-In</a></li>
-            <li><a href="#careers" onclick="setActiveLink(this)">Careers</a></li>
-            <li><a href="#contact-us" onclick="setActiveLink(this)">Contact Us</a></li>
 
-            <button class="hamburger-menu" onclick="toggleMenu()">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+        <button class="hamburger-menu" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <div class="nav-menu">
+            <ul>
+                <li><a href="#home" class="active" onclick="setActiveLink(this); closeMenu();">Home</a></li>
+                <li><a href="#about" onclick="setActiveLink(this); closeMenu();">About Us</a></li>
+                <li><a href="#sign-in" onclick="setActiveLink(this); closeMenu();">Sign-In</a></li>
+                <li><a href="#careers" onclick="setActiveLink(this); closeMenu();">Careers</a></li>
+                <li><a href="#contact-us" onclick="setActiveLink(this); closeMenu();">Contact Us</a></li>
+            </ul>
+        </div>
     </nav>
 
     <!-- Home Section (Hero) -->
