@@ -1358,6 +1358,13 @@
                 height: auto;
             }
 
+            .flex-center {
+                /* Override min-height for mobile to account for the fixed navbar */
+                /* This ensures the section effectively fills the space *below* the navbar */
+                min-height: calc(100vh - 120px);
+                /* 80px is the navbar height on mobile */
+            }
+
             .navbar-logo {
                 margin-bottom: 0;
             }
@@ -1387,7 +1394,7 @@
             }
 
             #home {
-                padding-top: 140px;
+                padding-top: 100px;
             }
 
             #home h1 {
