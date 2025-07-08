@@ -465,7 +465,7 @@
         }
 
         .navbar-logo img {
-            height: 50px;
+            height: 40px;
             width: auto;
             object-fit: contain;
             background: none !important;
@@ -586,21 +586,53 @@
         /* Media query for Mobile specific styles */
         @media (max-width: 768px) {
 
-            /* Ensure the logo is still visible when the menu is open */
+            /* These are the specific rules to adjust vertical alignment within the navbar */
+            .navbar {
+                padding: 15px 20px;
+                /* Adjust top/bottom padding to give more vertical space */
+                min-height: 70px;
+                /* Set a consistent minimum height for the navbar itself */
+                height: auto;
+                /* Allow the height to adjust based on content if needed */
+                display: flex;
+                /* Ensure it's a flex container */
+                align-items: center;
+                /* This is the key: vertically centers direct children (logo and hamburger) */
+                justify-content: space-between;
+                /* Keeps logo and hamburger at opposite ends */
+            }
+
             .navbar-logo {
                 z-index: 1002;
-                /* Higher than nav-menu */
+                /* No specific height needed here as img inside it will control the height */
+                display: flex;
+                /* Keep flex for image and text to stay side-by-side */
+                align-items: center;
+                /* Vertically align image and text within the logo container */
+            }
+
+            .navbar-logo img {
+                height: 40px;
+                /* Explicitly set the logo image height for mobile */
+                width: auto;
+                object-fit: contain;
+                background: none !important;
+                border: none !important;
+                box-shadow: none !important;
+                margin-right: 8px;
+                /* Maintain spacing between mango and text */
             }
 
             .hamburger-menu {
                 display: flex;
-                /* Always show hamburger on mobile */
                 margin-left: auto;
-                /* Push to the right */
+                margin-top: -48px;
                 position: relative;
-                /* For z-index to work */
                 z-index: 1002;
-                /* Ensure it's above the menu */
+                height: 30px;
+                /* Set hamburger height to match logo height for perfect alignment */
+                align-items: center;
+                /* Vertically centers the lines within the hamburger icon */
             }
 
             .nav-menu {
