@@ -157,6 +157,7 @@
             /* Animation for the tree growth */
             clip-path: inset(100% 0 0 0);
             /* Starts hidden from the bottom */
+            animation: growHomeTree 4s ease-out forwards;
             animation: growHomeTree 4.5s ease-out forwards;
             /* 2s duration, ease-out, stays at end state */
         }
@@ -199,8 +200,7 @@
         .grid-item-icon {
             font-size: 3em;
             color: var(--primary-color);
-            margin-bottom: 25px;
-            margin-left: 270px;
+            margin-bottom: 15px;
         }
 
         .grid-item:nth-child(2) .grid-item-icon {
@@ -911,7 +911,6 @@
             /* Removed direct animation here, using .animated-section for JS-triggered animation */
             color: var(--main-text-dark);
             /* Ensure text is dark on light background */
-            margin-bottom: 40px;
         }
 
         .section h2 {
@@ -928,7 +927,6 @@
             line-height: 1.7;
             max-width: 800px;
             margin: 0 auto 40px auto;
-            font-family: 'Century Gothic', serif;
             color: var(--main-text-dark);
         }
 
@@ -978,7 +976,6 @@
             font-weight: 600;
             margin-bottom: 15px;
             color: var(--primary-color);
-            margin-top: -63px;
         }
 
         .grid-item:nth-child(2) h3 {
@@ -1469,7 +1466,6 @@
                 font-size: 0.9em;
                 text-align: center;
                 margin: 0 auto;
-                margin-bottom: 20px;
             }
 
             .form-card {
