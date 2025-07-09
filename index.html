@@ -202,6 +202,16 @@
             margin-bottom: 15px;
         }
 
+        .grid-item-header {
+            display: flex;
+            align-items: end;
+            margin-bottom: 20px;
+        }
+
+        .grid-item-header i {
+            padding-right: 16px;
+        }
+
         .grid-item:nth-child(2) .grid-item-icon {
             color: var(--accent-color);
         }
@@ -959,6 +969,9 @@
             /* Smooth transition for hover */
             border: 1px solid rgba(var(--ui-elements-slate), 0.1);
             /* Very subtle border */
+            display: inline;
+            padding-right: 16px;
+            align-items: center;
         }
 
         .grid-item:hover {
@@ -975,6 +988,8 @@
             font-weight: 600;
             margin-bottom: 15px;
             color: var(--primary-color);
+            display: inline;
+            align-items: center;
         }
 
         .grid-item:nth-child(2) h3 {
@@ -1463,8 +1478,8 @@
 
             .section p {
                 font-size: 0.9em;
-                text-align: center;
-                margin: 0 auto;
+                align-content: flex-start;
+                margin-bottom: 0 auto;
             }
 
             .form-card {
@@ -1557,21 +1572,27 @@
 
             <div class="grid-container">
                 <div class="grid-item">
-                    <i class="fas fa-bullseye grid-item-icon"></i>
-                    <h3>Our Mission</h3>
+                    <div class="grid-item-header">
+                        <i class="fas fa-bullseye grid-item-icon"></i>
+                        <h3>Our Mission</h3>
+                    </div>
+
                     <p>To empower individuals to connect with their extended families, foster a deeper understanding of
                         their lineage, and build a more interconnected global community. We strive to make family
                         history accessible and exciting for everyone.</p>
                 </div>
                 <div class="grid-item">
-                    <i class="fas fa-cogs grid-item-icon"></i>
-                    <h3>How It Works</h3>
-                    <p>Users input their nuclear family data, and our advanced algorithm analyzes commonalities and
-                        potential links across our vast database. We then present you with potential family connections,
-                        allowing you to explore and verify new relationships securely.</p>
+                    <div class="grid-item-header">
+                        <i class="fas fa-cogs grid-item-icon"></i>
+                        <h3>How It Works</h3>
+                    </div>
+                        <p>Users input their nuclear family data, and our advanced algorithm analyzes commonalities and
+                            potential links across our vast database. We then present you with potential family
+                            connections,
+                            allowing you to explore and verify new relationships securely.</p>
+                    </div>
                 </div>
             </div>
-        </div>
     </section>
 
     <!-- Sign-in Section -->
@@ -1904,47 +1925,47 @@
             const inviteInput = document.querySelector('.invite-code-input');
 
             if (getStartedBtn) {
-            getStartedBtn.addEventListener('click', function () {
-                const inviteCode = inviteInput.value.trim();
-                if (inviteCode) {
-                    // Handle the invite code logic here
-                    // IMPORTANT: DO NOT use alert() in production. Use a custom modal or message box.
-                    // For demonstration purposes:
-                    const messageBox = document.createElement('div');
-                    messageBox.style.cssText = `
+                getStartedBtn.addEventListener('click', function () {
+                    const inviteCode = inviteInput.value.trim();
+                    if (inviteCode) {
+                        // Handle the invite code logic here
+                        // IMPORTANT: DO NOT use alert() in production. Use a custom modal or message box.
+                        // For demonstration purposes:
+                        const messageBox = document.createElement('div');
+                        messageBox.style.cssText = `
                         position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
                         background-color: #4A6835; color: #FAF8F2; padding: 20px; border-radius: 8px;
                         box-shadow: 0 4px 15px rgba(0,0,0,0.2); z-index: 10000; text-align: center;
                         font-family: 'Inter', sans-serif;
                     `;
-                    messageBox.innerHTML = `
+                        messageBox.innerHTML = `
                         <p>Invite code entered: <strong>${inviteCode}</strong></p>
                         <button style="background-color: #C4623F; color: #FAF8F2; padding: 8px 15px;
                             border: none; border-radius: 5px; margin-top: 15px; cursor: pointer;">OK</button>
                     `;
-                    document.body.appendChild(messageBox);
-                    messageBox.querySelector('button').onclick = () => messageBox.remove();
-                } else {
-                    // IMPORTANT: DO NOT use alert() in production. Use a custom modal or message box.
-                    // For demonstration purposes:
-                    const messageBox = document.createElement('div');
-                    messageBox.style.cssText = `
+                        document.body.appendChild(messageBox);
+                        messageBox.querySelector('button').onclick = () => messageBox.remove();
+                    } else {
+                        // IMPORTANT: DO NOT use alert() in production. Use a custom modal or message box.
+                        // For demonstration purposes:
+                        const messageBox = document.createElement('div');
+                        messageBox.style.cssText = `
                         position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
                         background-color: #C4623F; color: #FAF8F2; padding: 20px; border-radius: 8px;
                         box-shadow: 0 4px 15px rgba(0,0,0,0.2); z-index: 10000; text-align: center;
                         font-family: 'Inter', sans-serif;
                     `;
-                    messageBox.innerHTML = `
+                        messageBox.innerHTML = `
                         <p>Please enter an invite code</p>
                         <button style="background-color: #4A6835; color: #FAF8F2; padding: 8px 15px;
                             border: none; border-radius: 5px; margin-top: 15px; cursor: pointer;">OK</button>
                     `;
-                    document.body.appendChild(messageBox);
-                    messageBox.querySelector('button').onclick = () => messageBox.remove();
-                }
-            });
-        }
-    });
+                        document.body.appendChild(messageBox);
+                        messageBox.querySelector('button').onclick = () => messageBox.remove();
+                    }
+                });
+            }
+        });
     </script>
 
     <script>
